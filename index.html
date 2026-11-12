@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>St. GeorgeWatch — Live weather, alerts and local conditions for St. George, UT</title>
+<meta name="description" content="Live weather, National Weather Service alerts, forecast, recent earthquakes, and wildfire reports for St. George, Utah.">
+<link rel="canonical" href="https://stgeorgewatch.com/">
+<style>
+:root{--accent:#b3361e;--g1:#8a2a14;--g2:#b3361e;--bg:#fcf3ef;--card:#ffffff;--ink:#2a1510;--mute:#5a5f66;--line:#e3dbd7;--chip:#efe7e3;--accentT:#b3361e;--warn:#8a5300;--bad:#b3261e;--badT:#b3261e;--info:#1e5fa8;--infoT:#1e5fa8;}
+[data-theme="dark"]{--accent:#b3361e;--bg:#170d0a;--card:#241512;--ink:#f6e5df;--mute:#aab0b8;--line:#372f2c;--chip:#312320;--accentT:#c86b5a;--warn:#a85f00;--bad:#c9382f;--badT:#ff9b94;--info:#4d8fd6;--infoT:#8ec1ff;}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Calibri,Carlito,'Segoe UI',Roboto,Arial,sans-serif;padding:0 env(safe-area-inset-right,0) env(safe-area-inset-bottom,0) env(safe-area-inset-left,0)}
+h1,h2,h3{font-family:Cambria,Georgia,'Times New Roman',serif;line-height:1.2;margin:0}
+a{color:var(--accentT)}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--accentT);outline-offset:2px}
+.sr{position:absolute;left:-9999px}
+.hero{position:relative;overflow:hidden;color:#fff;background:linear-gradient(135deg,var(--g1),var(--g2));padding:calc(env(safe-area-inset-top,0px) + 16px) 16px 78px}
+.hero .row{max-width:980px;margin:0 auto;display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.hero h1{font-size:clamp(30px,8vw,52px);letter-spacing:.01em}
+.hero h1 span{opacity:.82;font-weight:400}
+.hero .area{font-size:15px;opacity:.92;margin:4px 0 0}
+.hero .tag{font-size:14px;opacity:.92;margin:2px 0 0}
+.tools{display:flex;gap:8px;flex:none}
+.tools button{min-width:44px;min-height:44px;border-radius:12px;border:1px solid #ffffff88;background:#ffffff22;color:#fff;padding:6px 12px}
+.sil{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:64px;display:block}
+.sil path{fill:var(--bg)}
+.sil2{position:absolute;left:0;right:0;bottom:12px;width:100%;height:60px;display:block;opacity:.28}
+.sil2 path{fill:#000}
+main{max-width:980px;margin:0 auto;padding:6px 16px 28px}
+.chip{display:inline-flex;align-items:center;gap:8px;margin:10px 0 0;padding:6px 12px;border-radius:999px;background:#00000040;font-size:14px}
+.dot{width:10px;height:10px;border-radius:50%;background:#b0b0b0;display:inline-block}
+.dot.on{background:#7CFF9B}.dot.part{background:#FFD166}.dot.off{background:#FF8A80}
+#alerts{margin:12px 0 0;display:grid;gap:10px}
+.alert{border:1px solid var(--line);border-left-width:8px;background:var(--card);border-radius:12px;padding:12px 14px}
+.alert.Extreme{border-left-color:#7b1fa2}.alert.Severe{border-left-color:var(--bad)}.alert.Moderate{border-left-color:var(--warn)}.alert.Minor,.alert.Unknown{border-left-color:var(--info)}
+.alert .sev{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:6px;background:var(--chip);margin-right:8px}
+.alert h3{font-size:18px;margin:6px 0 2px}
+.alert .meta{font-size:14px;color:var(--mute)}
+.alert details{margin-top:8px}.alert summary{cursor:pointer;color:var(--accentT);font-weight:600}
+.alert pre{white-space:pre-wrap;font:inherit;font-size:15px;margin:8px 0 0}
+.none{padding:12px 14px;border:1px dashed var(--line);border-radius:12px;color:var(--mute);font-size:15px}
+.tabs{position:sticky;top:0;z-index:5;background:var(--bg);display:flex;gap:6px;overflow-x:auto;padding:10px 0 8px;margin-top:8px;border-bottom:1px solid var(--line)}
+.tabs button{flex:none;min-height:44px;padding:8px 16px;border-radius:999px;border:1px solid var(--line);background:var(--card)}
+.tabs button[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+.panel{display:none;padding-top:14px}.panel.on{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:14px}
+.card h2{font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin-bottom:10px}
+.now{display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:720px){.now{grid-template-columns:1.1fr 1fr}}
+.temp{font:700 clamp(64px,18vw,104px)/1 Cambria,Georgia,'Times New Roman',serif;letter-spacing:-.02em}
+.temp small{font-size:.4em;font-weight:400;color:var(--mute)}
+.cond{font-size:22px;margin:4px 0 0}
+.sub{color:var(--mute);font-size:14px;margin-top:8px}
+.stale{color:var(--badT);font-weight:700}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.stat{background:var(--chip);border-radius:12px;padding:10px 12px}
+.stat span{display:block;font-size:13px;color:var(--mute)}.stat b{font-size:20px}
+.hourly{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px}
+.hr{flex:none;min-width:64px;text-align:center;background:var(--chip);border-radius:12px;padding:8px 6px}
+.hr .t{font-size:13px;color:var(--mute)}.hr .i{font-size:22px}.hr .d{font-weight:700}.hr .p{font-size:12px;color:var(--infoT)}
+.list{list-style:none;margin:0;padding:0}
+.list li{border-top:1px solid var(--line);padding:12px 0}.list li:first-child{border-top:0}
+.fc{display:flex;gap:12px;align-items:flex-start}.fc .i{font-size:30px;flex:none;width:40px;text-align:center}
+.fc .n{font-weight:700}.fc .s{color:var(--mute);font-size:15px}.fc .d{margin-left:auto;font:700 22px Cambria,Georgia,'Times New Roman',serif;text-align:right;flex:none}
+.fc .d small{display:block;font:400 12px Calibri,Carlito,'Segoe UI',Roboto,Arial,sans-serif;color:var(--infoT)}
+.fc details{margin-top:4px}.fc summary{cursor:pointer;color:var(--accentT);font-size:14px}
+.mag{flex:none;min-width:54px;text-align:center;border-radius:10px;padding:6px 4px;font-weight:700;background:var(--chip)}
+.mag.m3{background:var(--warn);color:#fff}.mag.m4{background:var(--bad);color:#fff}
+.row2{display:flex;gap:12px;align-items:flex-start}
+.row2 .b{flex:1;min-width:0}.row2 .t{font-weight:700}.row2 .s{color:var(--mute);font-size:14px}
+.scope{width:100%;max-width:360px;display:block;margin:0 auto 6px;background:var(--chip);border-radius:12px}
+.err{padding:12px 14px;border-radius:12px;background:var(--chip);color:var(--ink);margin-bottom:12px}
+.err button{margin-left:8px;border:1px solid var(--line);background:var(--card);border-radius:8px;padding:6px 12px;min-height:40px}
+.upd{font-size:13px;color:var(--mute);margin-top:6px}
+footer{max-width:980px;margin:0 auto;padding:6px 16px 40px;color:var(--mute);font-size:13px}
+footer p{margin:8px 0}footer a{color:var(--accentT)}
+.links{display:flex;flex-wrap:wrap;gap:8px 16px;margin:8px 0}
+@media(prefers-reduced-motion:no-preference){.panel.on{animation:fade .2s ease}@keyframes fade{from{opacity:.4}to{opacity:1}}}
+@media print{.tabs,.tools,.sil,.sil2{display:none}.panel{display:block!important}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="row">
+    <div>
+      <h1>St. George<span>Watch</span></h1>
+      <p class="area">St. George, Utah</p>
+      <p class="tag">Live weather, alerts and local conditions</p>
+      <div class="chip" role="status" aria-live="polite"><span class="dot" id="dot"></span><span id="status">Loading live data…</span></div>
+    </div>
+    <div class="tools">
+      <button id="refresh" type="button" aria-label="Refresh all data">&#x21bb;</button>
+      <button id="theme" type="button" aria-label="Switch between light and dark">&#9680;</button>
+    </div>
+  </div>
+  <svg class="sil2" viewBox="0 0 800 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,120 L0,86 L90,86 L104,64 L224,64 L238,86 L300,86 L316,52 L466,52 L482,86 L572,86 L584,68 L724,68 L738,86 L800,86 L800,120 Z"/></svg>
+  <svg class="sil" viewBox="0 0 800 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,120 L0,70 L60,70 L60,48 L150,48 L150,76 L230,76 L230,40 L330,40 L330,64 L420,64 L420,30 L520,30 L520,58 L610,58 L610,44 L720,44 L720,80 L800,80 L800,120 Z"/></svg>
+</header>
+<main>
+  <div id="alerts" aria-live="polite"></div>
+  <div class="tabs" role="tablist" aria-label="Sections" id="tabs">
+    <button role="tab" id="tb-now" aria-controls="p-now" aria-selected="true" data-p="now" type="button">Now</button>
+    <button role="tab" id="tb-forecast" aria-controls="p-forecast" aria-selected="false" data-p="forecast" type="button">Forecast</button>
+    <button role="tab" id="tb-quakes" aria-controls="p-quakes" aria-selected="false" data-p="quakes" type="button">Earthquakes</button>
+    <button role="tab" id="tb-fire" aria-controls="p-fire" aria-selected="false" data-p="fire" type="button">Wildfire</button>
+    <button role="tab" id="tb-dispatch" aria-controls="p-dispatch" aria-selected="false" data-p="dispatch" type="button" hidden>Dispatch</button>
+  </div>
+
+  <section class="panel on" id="p-now" role="tabpanel" aria-labelledby="tb-now">
+    <div id="e-now"></div>
+    <div class="now">
+      <div class="card"><h2>Right now</h2><div id="nowMain"><p class="sub">Loading…</p></div></div>
+      <div class="card"><h2>Conditions</h2><div id="nowStats" class="stats"></div><p class="sub" id="nowSrc"></p></div>
+    </div>
+    <div class="card"><h2>Next 12 hours</h2><div id="hourly" class="hourly"></div></div>
+  </section>
+
+  <section class="panel" id="p-forecast" role="tabpanel" aria-labelledby="tb-forecast">
+    <div id="e-forecast"></div>
+    <div class="card"><h2>Forecast</h2><ul class="list" id="fcList"><li class="sub">Loading…</li></ul><p class="upd" id="fcUpd"></p></div>
+  </section>
+
+  <section class="panel" id="p-quakes" role="tabpanel" aria-labelledby="tb-quakes">
+    <div id="e-quakes"></div>
+    <div class="card"><h2 id="qH">Earthquakes</h2><svg id="qScope" class="scope" viewBox="-110 -110 220 220" role="img" aria-label="Map of recent earthquakes around the area center"></svg><p class="upd" id="qNote"></p><ul class="list" id="qList"><li class="sub">Loading…</li></ul><p class="upd" id="qUpd"></p></div>
+  </section>
+
+  <section class="panel" id="p-fire" role="tabpanel" aria-labelledby="tb-fire">
+    <div id="e-fire"></div>
+    <div class="card"><h2 id="fH">Wildfire and prescribed burns</h2><ul class="list" id="fList"><li class="sub">Loading…</li></ul><p class="upd" id="fUpd"></p></div>
+  </section>
+
+  <section class="panel" id="p-dispatch" role="tabpanel" aria-labelledby="tb-dispatch">
+    <div id="e-dispatch"></div>
+    <div class="card"><h2>Dispatch feed</h2><ul class="list" id="dList"><li class="sub">Loading…</li></ul><p class="upd" id="dUpd"></p></div>
+  </section>
+</main>
+<footer>
+  <div class="links" id="links"></div>
+  <p>Data: <a href="https://www.weather.gov/" target="_blank" rel="noopener">National Weather Service</a> (conditions, forecast, alerts), <a href="https://earthquake.usgs.gov/" target="_blank" rel="noopener">U.S. Geological Survey</a> (earthquakes), and <a href="https://inciweb.wildfire.gov/" target="_blank" rel="noopener">national wildfire incident reporting</a> (wildfire and prescribed burns). Each section shows when its data was fetched and how old the source reading is.</p>
+  <p>This site is not an emergency service and is not affiliated with any government agency. Information can be delayed, incomplete, or wrong. In an emergency, call 911.</p>
+</footer>
+<script>
+(function(){
+'use strict';
+var CFG={"lat": 37.0965, "lng": -113.5684, "tz": "America/Denver", "quakeKm": 250, "fireMi": 150, "feedUrl": "", "links": [["City of St. George", "https://sgcityutah.gov/"], ["National Weather Service office", "https://www.weather.gov/slc/"]]};
+var $=function(id){return document.getElementById(id)};
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function store(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}}
+var tz=CFG.tz;
+function fmt(ms,o){try{return new Date(ms).toLocaleString('en-US',Object.assign({timeZone:tz},o||{hour:'numeric',minute:'2-digit'}))}catch(e){return new Date(ms).toLocaleString()}}
+function fmtDay(ms){return fmt(ms,{weekday:'short',month:'short',day:'numeric'})}
+function fmtFull(ms){return fmt(ms,{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'})}
+function ago(ms){var s=Math.max(0,Math.round((Date.now()-ms)/1000));if(s<90)return 'just now';var m=Math.round(s/60);if(m<90)return m+' min ago';var h=Math.round(m/60);if(h<36)return h+' hr ago';return Math.round(h/24)+' days ago'}
+function c2f(c){return c*9/5+32}
+function card(d){var a=['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'];return a[Math.round(d/22.5)%16]}
+function miles(la1,lo1,la2,lo2){var R=3958.8,r=Math.PI/180,dl=(la2-la1)*r,dg=(lo2-lo1)*r,h=Math.sin(dl/2)*Math.sin(dl/2)+Math.cos(la1*r)*Math.cos(la2*r)*Math.sin(dg/2)*Math.sin(dg/2);return 2*R*Math.asin(Math.sqrt(h))}
+function bearing(la1,lo1,la2,lo2){var r=Math.PI/180,y=Math.sin((lo2-lo1)*r)*Math.cos(la2*r),x=Math.cos(la1*r)*Math.sin(la2*r)-Math.sin(la1*r)*Math.cos(la2*r)*Math.cos((lo2-lo1)*r);return card((Math.atan2(y,x)/r+360)%360)}
+function icon(txt,day){var t=String(txt||'').toLowerCase();
+  if(/thunder|t-storm/.test(t))return '\u26C8\uFE0F';if(/snow|flurr|sleet|blizzard|wintry/.test(t))return '\u2744\uFE0F';if(/rain|shower|drizzle/.test(t))return '\uD83C\uDF27\uFE0F';
+  if(/fog|haze|smoke|dust/.test(t))return '\uD83C\uDF2B\uFE0F';if(/wind|breezy/.test(t)&&!/cloud|sun|clear/.test(t))return '\uD83D\uDCA8';
+  if(/partly|mostly sunny|mostly clear|few/.test(t))return day===false?'\u2601\uFE0F':'\uD83C\uDF24\uFE0F';if(/cloud|overcast/.test(t))return '\u2601\uFE0F';
+  if(/sunny|clear|fair/.test(t))return day===false?'\uD83C\uDF19':'\u2600\uFE0F';return '\uD83C\uDF21\uFE0F'}
+function getJSON(url,ms){var c=new AbortController(),t=setTimeout(function(){c.abort()},ms||15000);
+  return fetch(url,{signal:c.signal,cache:'no-store'}).then(function(r){clearTimeout(t);if(!r.ok)throw new Error('HTTP '+r.status);return r.json()},function(e){clearTimeout(t);throw e})}
+function retry(fn,n){return fn().catch(function(e){if(n>0)return new Promise(function(r){setTimeout(r,800)}).then(function(){return retry(fn,n-1)});throw e})}
+function mask(s){return String(s).replace(/\b\d{1,5}(?=\s+(?:[NSEW]\.?\s+)?[A-Za-z]+\s+(?:St|Ave|Rd|Dr|Ln|Blvd|Ct|Way|Pl|Cir|Pkwy|Ter|Trl|Street|Avenue|Road|Drive|Lane|Boulevard|Court|Place|Circle|Parkway)\b)/gi,'XXX')}
+
+/* ---------- state ---------- */
+var S={wx:{ok:null,at:0},q:{ok:null,at:0},f:{ok:null,at:0},d:{ok:null,at:0}},OFF=false;
+var PT=null;
+var EVERY={wx:300000,q:600000,f:900000,d:60000};
+function setErr(id,msg,fn){var el=$('e-'+id);if(!msg){el.innerHTML='';return}el.innerHTML='<div class="err" role="alert">'+esc(msg)+' <button type="button">Try again</button></div>';el.querySelector('button').onclick=fn}
+function updateChip(){
+  var keys=['wx','q','f'];if(CFG.feedUrl)keys.push('d');
+  var ok=keys.filter(function(k){return S[k].ok===true}).length,bad=keys.filter(function(k){return S[k].ok===false}).length,pend=keys.filter(function(k){return S[k].ok===null}).length;
+  var dot=$('dot'),st=$('status');
+  if(OFF||navigator.onLine===false){dot.className='dot off';st.textContent='You are offline. Showing the last data loaded.';return}
+  if(pend===keys.length){dot.className='dot';st.textContent='Loading live data\u2026';return}
+  var last=Math.max.apply(null,keys.map(function(k){return S[k].at||0}));
+  if(bad===0){dot.className='dot on';st.textContent='Live \u00B7 '+ok+' of '+keys.length+' sources \u00B7 checked '+fmt(last)}
+  else if(ok>0){dot.className='dot part';st.textContent=ok+' of '+keys.length+' sources available \u00B7 checked '+fmt(last)}
+  else{dot.className='dot off';st.textContent='Could not reach the data sources right now'}
+}
+
+/* ---------- weather + alerts ---------- */
+function loadPoint(){if(PT)return Promise.resolve(PT);return retry(function(){return getJSON('https://api.weather.gov/points/'+CFG.lat+','+CFG.lng)},2).then(function(d){PT=d.properties;if(PT.timeZone)tz=PT.timeZone;return PT})}
+function findObs(stations){
+  var feats=(stations&&stations.features||[]).slice(0,5);
+  return Promise.all(feats.map(function(f){return getJSON(f.id+'/observations/latest',12000).then(function(d){var p=d.properties||{},t=p.temperature&&p.temperature.value,ts=Date.parse(p.timestamp);return(t!=null&&ts)?{p:p,ts:ts,name:f.properties.name,id:f.properties.stationIdentifier}:null},function(){return null})})).then(function(a){
+    a=a.filter(Boolean);if(!a.length)return null;
+    var fresh=a.filter(function(x){return Date.now()-x.ts<2*3600000});
+    var pick=fresh.length?fresh[0]:a.sort(function(x,y){return y.ts-x.ts})[0];
+    return Date.now()-pick.ts<12*3600000?pick:null})}
+function renderNow(obs,fc){
+  var m=$('nowMain'),s=$('nowStats');
+  var per=fc&&fc.properties&&fc.properties.periods||[];
+  if(obs){var p=obs.p,F=Math.round(c2f(p.temperature.value)),ts=Date.parse(p.timestamp),old=Date.now()-ts>2*3600000;
+    var feels=null;if(p.heatIndex&&p.heatIndex.value!=null)feels=Math.round(c2f(p.heatIndex.value));else if(p.windChill&&p.windChill.value!=null)feels=Math.round(c2f(p.windChill.value));
+    m.innerHTML='<div class="temp">'+F+'<small>\u00B0F</small></div><p class="cond">'+(p.textDescription?icon(p.textDescription,per[0]&&per[0].isDaytime)+' '+esc(p.textDescription):'')+'</p>'+
+      (feels!=null&&Math.abs(feels-F)>=3?'<p class="sub">Feels like '+feels+'\u00B0F</p>':'')+
+      '<p class="sub'+(old?' stale':'')+'">'+(old?'Old reading: ':'')+'Observed '+esc(ago(ts))+' ('+esc(fmt(ts))+')</p>';
+    var w=p.windSpeed&&p.windSpeed.value!=null?Math.round(p.windSpeed.value*0.621371):null,g=p.windGust&&p.windGust.value!=null?Math.round(p.windGust.value*0.621371):null,dir=p.windDirection&&p.windDirection.value!=null?card(p.windDirection.value):'';
+    var h=p.relativeHumidity&&p.relativeHumidity.value!=null?Math.round(p.relativeHumidity.value):null,pr=p.barometricPressure&&p.barometricPressure.value!=null?(p.barometricPressure.value*0.0002953).toFixed(2):null;
+    var cells=[['Wind',w==null?'\u2014':(w===0?'Calm':dir+' '+w+' mph'+(g&&g>w?' (gusts '+g+')':''))],['Humidity',h==null?'\u2014':h+'%'],['Pressure',pr==null?'\u2014':pr+' inHg']];
+    if(per[0])cells.push([per[0].isDaytime?'Today':'Tonight',per[0].temperature+'\u00B0 '+(per[0].isDaytime?'high':'low')]);
+    s.innerHTML=cells.map(function(c){return '<div class="stat"><span>'+c[0]+'</span><b>'+esc(c[1])+'</b></div>'}).join('');
+    $('nowSrc').textContent='Source: National Weather Service station '+obs.id+', '+obs.name+'. Conditions are from the nearest reporting station, not from your exact spot.'}
+  else{m.innerHTML='<p class="sub">No recent station reading is available right now. The forecast below is still current.</p>';s.innerHTML='';$('nowSrc').textContent=''}
+}
+function renderHourly(h){var per=(h&&h.properties&&h.properties.periods||[]).slice(0,12);
+  $('hourly').innerHTML=per.length?per.map(function(x){var ms=Date.parse(x.startTime),pop=x.probabilityOfPrecipitation&&x.probabilityOfPrecipitation.value;
+    return '<div class="hr"><div class="t">'+esc(fmt(ms,{hour:'numeric'}))+'</div><div class="i">'+icon(x.shortForecast,x.isDaytime)+'</div><div class="d">'+x.temperature+'\u00B0</div>'+(pop?'<div class="p">'+pop+'%</div>':'')+'</div>'}).join(''):'<p class="sub">Hourly forecast not available right now.</p>'}
+function renderForecast(fc){var per=(fc&&fc.properties&&fc.properties.periods||[]).slice(0,14);
+  $('fcList').innerHTML=per.length?per.map(function(x){var pop=x.probabilityOfPrecipitation&&x.probabilityOfPrecipitation.value;
+    return '<li><div class="fc"><div class="i">'+icon(x.shortForecast,x.isDaytime)+'</div><div><div class="n">'+esc(x.name)+'</div><div class="s">'+esc(x.shortForecast)+'</div><details><summary>Details</summary><p class="s">'+esc(x.detailedForecast)+'</p></details></div><div class="d">'+x.temperature+'\u00B0'+(pop?'<small>'+pop+'% precip</small>':'')+'</div></div></li>'}).join(''):'<li class="sub">Forecast not available right now.</li>';
+  var u=fc&&fc.properties&&(fc.properties.updateTime||fc.properties.generatedAt);$('fcUpd').textContent=u?'Forecast issued '+fmtFull(Date.parse(u))+' by the National Weather Service'+(PT&&PT.cwa?' ('+PT.cwa+' office)':'')+'.':''}
+function renderAlerts(a){var f=(a&&a.features||[]).map(function(x){return x.properties}),order={Extreme:0,Severe:1,Moderate:2,Minor:3,Unknown:4};
+  f.sort(function(x,y){return (order[x.severity]==null?4:order[x.severity])-(order[y.severity]==null?4:order[y.severity])});
+  $('alerts').innerHTML=f.length?f.map(function(p){var sev=order[p.severity]!=null?p.severity:'Unknown',exp=Date.parse(p.ends||p.expires);
+    return '<article class="alert '+sev+'"><span class="sev">'+esc(sev)+'</span><b>'+esc(p.senderName||'National Weather Service')+'</b><h3>'+esc(p.event)+'</h3><div class="meta">'+esc(p.headline||'')+(exp?' \u00B7 until '+esc(fmtFull(exp)):'')+'</div><details><summary>Full alert</summary><pre>'+esc((p.description||'')+(p.instruction?'\n\n'+p.instruction:''))+'</pre></details></article>'}).join(''):
+    '<div class="none">No active National Weather Service alerts for this location right now. Checked '+esc(fmt(Date.now()))+'.</div>'}
+function loadWeather(){
+  setErr('now','');
+  return loadPoint().then(function(p){
+    var fc=retry(function(){return getJSON(p.forecast)},1).catch(function(){return null});
+    var hr=retry(function(){return getJSON(p.forecastHourly)},1).catch(function(){return null});
+    var ob=getJSON(p.observationStations,12000).then(findObs).catch(function(){return null});
+    var al=retry(function(){return getJSON('https://api.weather.gov/alerts/active?point='+CFG.lat+','+CFG.lng)},1).then(function(a){renderAlerts(a);return true},function(){$('alerts').innerHTML='<div class="none">Could not check for weather alerts right now. If severe weather is possible, check weather.gov or local news.</div>';return false});
+    return Promise.all([fc,hr,ob,al]).then(function(r){
+      if(!r[0]&&!r[1]&&!r[2])throw new Error('no weather data');
+      renderNow(r[2],r[0]);renderHourly(r[1]);renderForecast(r[0]);
+      S.wx={ok:true,at:Date.now()}})
+  }).catch(function(){S.wx={ok:false,at:S.wx.at};setErr('now','Could not load weather right now.',function(){run('wx')});if(!S.wx.at)$('nowMain').innerHTML='<p class="sub">Weather is not available right now.</p>';if(!$('alerts').innerHTML)$('alerts').innerHTML='<div class="none">Could not check for weather alerts right now. If severe weather is possible, check weather.gov or local news.</div>'}).then(updateChip)}
+
+/* ---------- earthquakes ---------- */
+function scopeSvg(pts,radiusMi){var s=100/radiusMi,out='',cos=Math.cos(CFG.lat*Math.PI/180),step=radiusMi/4;
+  for(var r=step;r<=radiusMi+.001;r+=step){out+='<circle r="'+(r*s).toFixed(1)+'" fill="none" stroke="var(--line)" stroke-width="0.7"/><text x="2" y="'+(-(r*s)+8).toFixed(1)+'" font-size="6" fill="var(--mute)">'+Math.round(r)+' mi</text>'}
+  out+='<line x1="-100" y1="0" x2="100" y2="0" stroke="var(--line)" stroke-width="0.5"/><line x1="0" y1="-100" x2="0" y2="100" stroke="var(--line)" stroke-width="0.5"/><text x="-3" y="-102" font-size="7" fill="var(--mute)">N</text>';
+  pts.forEach(function(p,i){var dx=(p.lng-CFG.lng)*69.17*cos,dy=(p.lat-CFG.lat)*69;if(Math.sqrt(dx*dx+dy*dy)>radiusMi)return;
+    out+='<circle cx="'+(dx*s).toFixed(1)+'" cy="'+(-dy*s).toFixed(1)+'" r="'+p.r+'" fill="var(--accentT)" fill-opacity="'+Math.max(.35,1-i/40).toFixed(2)+'" stroke="var(--card)" stroke-width="0.6"><title>'+esc(p.t)+'</title></circle>'});
+  return out+'<circle r="2" fill="var(--ink)"/>'}
+function loadQuakes(){
+  setErr('quakes','');
+  var s=new Date(Date.now()-7*864e5).toISOString().slice(0,19);
+  var u='https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&latitude='+CFG.lat+'&longitude='+CFG.lng+'&maxradiuskm='+CFG.quakeKm+'&minmagnitude=1.5&orderby=time&limit=30&starttime='+s;
+  var rMi=Math.round(CFG.quakeKm*0.621371);
+  return retry(function(){return getJSON(u)},1).then(function(d){
+    var f=(d.features||[]).map(function(x){var p=x.properties,c=x.geometry.coordinates;return{mag:p.mag,place:p.place,time:p.time,lat:c[1],lng:c[0],depth:c[2],url:p.url,mi:miles(CFG.lat,CFG.lng,c[1],c[0]),dir:bearing(CFG.lat,CFG.lng,c[1],c[0])}});
+    $('qH').textContent='Earthquakes within '+rMi+' miles \u00B7 last 7 days';
+    $('qScope').innerHTML=scopeSvg(f.map(function(q){return{lat:q.lat,lng:q.lng,r:(2+Math.max(0,q.mag)*1.1).toFixed(1),t:'M'+(q.mag==null?'?':q.mag.toFixed(1))+' '+q.place}}),rMi);
+    $('qNote').textContent=f.length?(f.length>=30?'Showing the 30 most recent earthquakes':f.length+' earthquake'+(f.length===1?'':'s'))+' of magnitude 1.5 or higher in USGS data. Dot size shows magnitude.':'';
+    $('qList').innerHTML=f.length?f.map(function(q){var m=q.mag==null?'?':q.mag.toFixed(1);
+      return '<li><div class="row2"><div class="mag '+(q.mag>=4?'m4':q.mag>=3?'m3':'')+'">M '+esc(m)+'</div><div class="b"><div class="t">'+esc(q.place)+'</div><div class="s">'+esc(ago(q.time))+' ('+esc(fmtFull(q.time))+') \u00B7 '+Math.round(q.mi)+' mi '+esc(q.dir)+' of center \u00B7 depth '+(q.depth==null?'?':Math.round(q.depth))+' km \u00B7 <a href="'+esc(q.url)+'" target="_blank" rel="noopener">USGS details</a></div></div></div></li>'}).join(''):
+      '<li class="sub">USGS reports no earthquakes of magnitude 1.5 or higher within '+rMi+' miles in the last 7 days.</li>';
+    $('qUpd').textContent='Fetched '+fmt(Date.now())+' from the U.S. Geological Survey. New events can take several minutes to appear.';
+    S.q={ok:true,at:Date.now()}
+  }).catch(function(){S.q={ok:false,at:S.q.at};setErr('quakes','Could not load earthquake data right now.',function(){run('q')});if(!S.q.at){$('qList').innerHTML='<li class="sub">Earthquake data is not available right now.</li>'}}).then(updateChip)}
+
+/* ---------- wildfire ---------- */
+var FT={WF:'Wildfire',RX:'Prescribed burn'};
+function loadFire(){
+  setErr('fire','');
+  var mi=CFG.fireMi,dLat=mi/69,dLon=mi/(69.17*Math.cos(CFG.lat*Math.PI/180));
+  var p=new URLSearchParams({where:'1=1',geometry:[CFG.lng-dLon,CFG.lat-dLat,CFG.lng+dLon,CFG.lat+dLat].join(','),geometryType:'esriGeometryEnvelope',inSR:'4326',spatialRel:'esriSpatialRelIntersects',outFields:'IncidentName,IncidentTypeCategory,IncidentSize,PercentContained,FireDiscoveryDateTime,ModifiedOnDateTime_dt,POOState,POOCounty',outSR:'4326',f:'geojson',resultRecordCount:'200'});
+  var u='https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/WFIGS_Incident_Locations_Current/FeatureServer/0/query?'+p.toString();
+  return retry(function(){return getJSON(u,20000)},1).then(function(d){
+    if(d.error)throw new Error('service error');
+    var cut=Date.now()-30*864e5;
+    var f=(d.features||[]).map(function(x){var q=x.properties,c=x.geometry&&x.geometry.coordinates;if(!c)return null;return{n:q.IncidentName,t:q.IncidentTypeCategory,sz:q.IncidentSize,pc:q.PercentContained,disc:q.FireDiscoveryDateTime,mod:q.ModifiedOnDateTime_dt,co:q.POOCounty,st:q.POOState,mi:miles(CFG.lat,CFG.lng,c[1],c[0]),dir:bearing(CFG.lat,CFG.lng,c[1],c[0])}})
+      .filter(function(x){return x&&x.mi<=mi&&(!x.mod||x.mod>cut)}).sort(function(a,b){return (a.t==='WF'?0:1)-(b.t==='WF'?0:1)||a.mi-b.mi});
+    $('fH').textContent='Wildfire and prescribed burns within '+mi+' miles';
+    var nW=f.filter(function(x){return x.t==='WF'}).length,nR=f.filter(function(x){return x.t==='RX'}).length,all=f;f=f.slice(0,25);
+    $('fList').innerHTML=f.length?'<li class="sub">'+nW+' wildfire'+(nW===1?'':'s')+' and '+nR+' prescribed burn'+(nR===1?'':'s')+' in the feed'+(all.length>25?'. Showing the 25 nearest, wildfires first.':'.')+'</li>'+f.map(function(x){
+      return '<li><div class="row2"><div class="mag '+(x.t==='WF'?'m3':'')+'">'+esc(FT[x.t]||x.t||'Incident')+'</div><div class="b"><div class="t">'+esc(x.n)+'</div><div class="s">'+Math.round(x.mi)+' mi '+esc(x.dir)+' of center'+(x.co?' \u00B7 '+esc(x.co)+' County':'')+' \u00B7 '+(x.sz!=null?Number(x.sz).toLocaleString('en-US')+' acres':'size not reported')+' \u00B7 '+(x.pc!=null?Math.round(x.pc)+'% contained':'containment not reported')+(x.disc?' \u00B7 reported '+esc(fmtDay(x.disc)):'')+'</div></div></div></li>'}).join(''):
+      '<li class="sub">The national incident feed lists no wildfire or prescribed burn updated in the last 30 days within '+mi+' miles. This feed can lag behind new fires. For fire information, see InciWeb or call local officials.</li>';
+    $('fUpd').innerHTML='Fetched '+esc(fmt(Date.now()))+' from the national wildfire incident feed. Showing incidents updated in the last 30 days. <a href="https://inciweb.wildfire.gov/" target="_blank" rel="noopener">InciWeb</a> has details.';
+    S.f={ok:true,at:Date.now()}
+  }).catch(function(){S.f={ok:false,at:S.f.at};setErr('fire','Could not load wildfire data right now.',function(){run('f')});if(!S.f.at){$('fList').innerHTML='<li class="sub">Wildfire data is not available right now.</li>'}}).then(updateChip)}
+
+/* ---------- optional dispatch feed (only when CFG.feedUrl is set) ---------- */
+function loadDispatch(){
+  if(!CFG.feedUrl)return Promise.resolve();
+  setErr('dispatch','');
+  return getJSON(CFG.feedUrl,10000).then(function(a){
+    if(!Array.isArray(a))throw new Error('bad shape');
+    a=a.filter(function(x){return x&&x.time&&x.text!=null}).sort(function(x,y){return Date.parse(y.time)-Date.parse(x.time)}).slice(0,60);
+    $('dList').innerHTML=a.length?a.map(function(x){var ms=Date.parse(x.time);return '<li><div class="row2"><div class="mag">'+esc(x.type||'CALL')+'</div><div class="b"><div class="t">'+esc(mask(x.text))+'</div><div class="s">'+esc(ago(ms))+' ('+esc(fmtFull(ms))+')'+(x.source?' \u00B7 '+esc(x.source):'')+'</div></div></div></li>'}).join(''):'<li class="sub">No entries in the feed right now.</li>';
+    $('dUpd').textContent='Fetched '+fmt(Date.now())+'. Street numbers are hidden.';S.d={ok:true,at:Date.now()}
+  }).catch(function(){S.d={ok:false,at:S.d.at};setErr('dispatch','Could not load the dispatch feed right now.',function(){run('d')})}).then(updateChip)}
+
+/* ---------- scheduling ---------- */
+var LOADERS={wx:loadWeather,q:loadQuakes,f:loadFire,d:loadDispatch};
+function run(k){return LOADERS[k]()}
+function runDue(force){if(document.hidden&&!force)return;['wx','q','f','d'].forEach(function(k){if(k==='d'&&!CFG.feedUrl)return;if(force||!S[k].at||Date.now()-S[k].at>EVERY[k])run(k)})}
+
+/* ---------- tabs, theme, links ---------- */
+var PANELS=['now','forecast','quakes','fire'];if(CFG.feedUrl){PANELS.push('dispatch');$('tb-dispatch').hidden=false}
+function show(p){if(PANELS.indexOf(p)<0)p='now';PANELS.forEach(function(x){$('p-'+x).classList.toggle('on',x===p);$('tb-'+x).setAttribute('aria-selected',x===p?'true':'false')})}
+$('tabs').addEventListener('click',function(e){var b=e.target.closest('button[data-p]');if(!b)return;show(b.getAttribute('data-p'));try{history.replaceState(null,'','#'+b.getAttribute('data-p'))}catch(x){}});
+window.addEventListener('hashchange',function(){show(location.hash.slice(1))});
+show(location.hash.slice(1));
+function theme(t){document.documentElement.setAttribute('data-theme',t);store('wtheme',t)}
+theme(store('wtheme')==='dark'?'dark':'light');
+$('theme').onclick=function(){theme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark')};
+$('refresh').onclick=function(){runDue(true)};
+$('links').innerHTML=(CFG.links||[]).map(function(l){return '<a href="'+esc(l[1])+'" target="_blank" rel="noopener">'+esc(l[0])+'</a>'}).join('');
+document.addEventListener('visibilitychange',function(){if(!document.hidden)runDue(false)});
+window.addEventListener('online',function(){OFF=false;runDue(true)});window.addEventListener('offline',function(){OFF=true;updateChip()});
+setInterval(function(){runDue(false);updateChip()},60000);
+runDue(true);
+})();
+</script>
+</body>
+</html>
