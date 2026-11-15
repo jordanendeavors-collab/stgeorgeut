@@ -1,0 +1,41 @@
+{
+ "name": "St. George Watch",
+ "short_name": "St. George Watch",
+ "description": "Live weather, alerts, police activity, earthquakes, wildfire reports, emergency numbers, and nearby places for St. George, Utah.",
+ "id": "/",
+ "start_url": "/",
+ "scope": "/",
+ "display": "standalone",
+ "background_color": "#170d0a",
+ "theme_color": "#170d0a",
+ "icons": [
+  {
+   "src": "icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "icon-maskable-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ],
+ "shortcuts": [
+  {
+   "name": "Alerts",
+   "url": "/#alerts"
+  },
+  {
+   "name": "Emergency and nearby",
+   "url": "/#emergency"
+  }
+ ]
+}
