@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; connect-src https:; base-uri 'none'; form-action 'none'">
+<title>Bridgehead Checkup · Free 2-minute business systems check</title>
+<style>
+:root{--brand:#004C54;--accent:#B6D63C;--bg:#f4f7f6;--card:#fff;--ink:#0f2326;--mute:#556366;--line:#d6e0df;--chip:#e9f1ef;--good:#2e8b3e;--warn:#b7791f;--bad:#C62828;--btn:#004C54;--btnInk:#fff}
+[data-theme=dark]{--brand:#003a40;--bg:#061a1d;--card:#0b2529;--ink:#e6f0ee;--mute:#9db5b2;--line:#1b3d42;--chip:#12333a;--good:#5cc96f;--warn:#e0b04a;--bad:#ff6b6b;--btn:#B6D63C;--btnInk:#061a1d}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Calibri,Carlito,"Segoe UI",Arial,sans-serif}
+h1,h2,h3{font-family:Cambria,Caladea,Georgia,serif;margin:0 0 .35em;line-height:1.2}
+header{background:var(--brand);color:#fff;padding:14px 16px;border-bottom:4px solid var(--accent);display:flex;align-items:center;gap:10px}
+header small{display:block;color:var(--accent);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+header b{font-family:Cambria,Georgia,serif;font-size:19px}
+main{max-width:720px;margin:0 auto;padding:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:12px}
+.btn{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;padding:11px 16px;font:inherit;cursor:pointer;text-decoration:none;display:inline-block}
+.btn.p{background:var(--btn);border-color:var(--btn);color:var(--btnInk);font-weight:700}
+.btn.big{font-size:18px;padding:14px 22px;width:100%}
+.btn.s{padding:6px 10px;font-size:14px}
+header .btn{background:transparent;color:#fff;border-color:#ffffff55}
+.note{font-size:14px;color:var(--mute)}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.hero h1{font-size:30px}
+.steps{display:flex;gap:6px;margin:4px 0 14px}.steps i{flex:1;height:6px;border-radius:4px;background:var(--line)}.steps i.on{background:var(--accent)}
+.q{padding:12px 0;border-bottom:1px solid var(--line)}.q:last-child{border:0}
+.q b{display:block;margin-bottom:8px}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:6px}
+.opts button{text-align:left;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:10px;padding:10px;font:inherit;font-size:15px;cursor:pointer}
+.opts button.on{border-color:var(--brand);box-shadow:inset 0 0 0 2px var(--brand);font-weight:700}
+[data-theme=dark] .opts button.on{border-color:var(--accent);box-shadow:inset 0 0 0 2px var(--accent)}
+.dev{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px}
+.dev div{background:var(--chip);border-radius:10px;padding:10px}.dev b{display:block;font-size:17px}
+.gauge{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.ring{width:120px;height:120px;border-radius:50%;display:grid;place-items:center;font:700 38px Cambria,Georgia,serif}
+.ring span{background:var(--card);width:92px;height:92px;border-radius:50%;display:grid;place-items:center}
+.big2{font:700 26px Cambria,Georgia,serif}
+.iss{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}.iss:last-child{border:0}
+.sev{flex:none;font-size:11px;font-weight:700;color:#fff;border-radius:4px;padding:2px 7px;height:fit-content;margin-top:3px}
+.sev.high{background:var(--bad)}.sev.med{background:var(--warn)}.sev.low{background:var(--good)}
+.lock{color:var(--mute);font-size:14px}
+.save{background:var(--brand);color:#fff;border-radius:14px;padding:16px}
+.save .big2{color:var(--accent)}
+input,select,textarea{width:100%;padding:11px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit}
+label{display:block;font-size:14px;font-weight:700;color:var(--mute);margin:8px 0 3px}
+.code{white-space:pre;overflow:auto;max-height:200px;font:11px/1.35 Consolas,Menlo,monospace;background:var(--chip);padding:8px;border-radius:8px}
+.drop{border:2px dashed var(--line);border-radius:12px;padding:20px;text-align:center;color:var(--mute);cursor:pointer}
+.hide{display:none}
+.cfg-wait main{display:none}.cfg-wait header small{visibility:hidden}#cfgLoading{display:none}.cfg-wait #cfgLoading{display:block}</style>
+</head>
+<body><script>document.body.classList.add('cfg-wait');setTimeout(function(){document.body.classList.remove('cfg-wait')},7000)</script>
+<header><div style="flex:1"><small>Free · 2 minutes · nothing to install</small><b>Bridgehead Checkup</b></div><button class="btn s" id="themeBtn" title="Light / dark">◐</button></header><p id="cfgLoading" class="note" style="padding:20px 16px">Loading…</p>
+<main>
+
+<div id="v-start">
+  <div class="card hero">
+    <h1>See what's slowing your business down — and what it's costing you.</h1>
+    <p>A quick checkup of the systems you run on: your computers, your software, how you bill, schedule, and back up. You get a score, the issues it finds, and an estimate of what fixing them is worth.</p>
+    <button class="btn p big" onclick="go(1)">Start my free checkup</button>
+    <button class="btn big" type="button" style="margin-top:8px" onclick="document.getElementById('psBox').scrollIntoView({behavior:'smooth'})">Or try the free 30-second phone and website test ↓</button>
+    <p id="resumeNote" class="note hide" style="margin-top:10px">Your earlier answers are saved on this device. <a href="#" onclick="startOver();return false">Start over</a></p>
+    <p class="note" style="margin-top:10px">Private by design: your answers stay on this page unless you choose to send them. The optional website test contacts only the address you type. No file names, no customer data, no passwords.</p>
+  </div>
+  <div class="card" id="consultBox" hidden><h2>Request a free consult</h2><p class="note">Tell us how to reach you. A person will contact you. Nothing is tested, scanned, or sent about your systems.</p><label>Your name</label><input id="c_name" autocomplete="name"><label>Business name</label><input id="c_biz" autocomplete="organization"><label>Best phone</label><input id="c_phone" autocomplete="tel" inputmode="tel"><label>Email (so we can reply)</label><input id="c_email" type="email" autocomplete="email" inputmode="email"><label>Best time to reach you</label><select id="c_time"><option>Any time</option><option>Morning</option><option>Afternoon</option><option>Evening</option></select><label>What would you like to talk about?</label><select id="c_topic"><option>Save money</option><option>Fix what's broken</option><option>Upgrade to better tools</option><option>All of the above</option></select><div style="position:absolute;left:-9999px;height:0;overflow:hidden" aria-hidden="true"><label>Leave this empty<input id="c_hp" tabindex="-1" autocomplete="off"></label></div><label class="note" style="display:flex;gap:8px;align-items:flex-start;margin:10px 0;font-weight:400"><input type="checkbox" id="cConsent" style="width:auto;margin-top:3px"><span id="cConsentText"></span></label><button class="btn p big" id="cBtn" type="button" onclick="sendConsult()">Request my consult</button><div id="cMsg" role="status" aria-live="polite"></div></div>
+  <!-- BHC-PS-CARD -->
+  <div class="card" id="psBox">
+    <h2>Free 30-second test: your phone and your website</h2>
+    <p class="note">Two quick tests with instant results. Then see what the full checkup finds.</p>
+    <h3 style="margin-top:10px">Your phone</h3>
+    <p class="note" id="psPhoneAuto"></p>
+    <div id="psPhoneQs"></div>
+    <h3 style="margin-top:14px">Your website</h3>
+    <p class="note">A browser can only see the basics: does it load, does the padlock (https) work, do both address versions open, and how fast does it answer. A full website review is in your full report.</p>
+    <label for="psUrl">Your website address</label>
+    <input id="psUrl" type="text" inputmode="url" autocapitalize="off" autocomplete="off" spellcheck="false" placeholder="yourcompany.com">
+    <label class="note" style="display:flex;gap:8px;align-items:flex-start;margin:8px 0;font-weight:400"><input type="checkbox" id="psConsent" style="width:auto;margin-top:3px"> <span>I own this website or have permission to test it. I understand this test contacts the address above from this device. Nothing else is sent anywhere.</span></label>
+    <div class="row"><button class="btn p s" id="psRun" type="button">Test my website</button></div>
+    <div id="psSiteRes" aria-live="polite"></div>
+    <div id="psQuick" aria-live="polite"></div>
+  </div>
+<!-- /BHC-PS-CARD -->
+</div>
+
+<div id="v-q" class="hide">
+  <div class="steps"><i class="on"></i><i class="on"></i><i></i></div>
+  <div class="card">
+    <h2 id="devH">Your computer, at a glance</h2>
+    <p class="note">What your browser shares — checked instantly.</p>
+    <div class="dev" id="dev"></div>
+  </div>
+  <div class="card" id="psLink"><p class="note" style="margin:0 0 8px">Want a quick read on your phone and website too?</p><button class="btn s" type="button" onclick="go(0);document.getElementById('psBox').scrollIntoView()">Take the 30-second test first</button></div>
+  <div class="card">
+    <h2>12 quick questions</h2>
+    <p class="note">Answer what's true today, not what you wish were true.</p>
+    <div id="qs"></div>
+  </div>
+  <div class="card">
+    <h3>Want a deeper look? <span class="note">(optional · 2–10 minutes · read-only)</span></h3>
+    <p class="note">A small read-only check finds the business programs and <b>AI tools</b> on this computer and looks for <b>common security weak spots</b> — the same basics scammers look for: antivirus and firewall off, missing updates, remote-control apps, password lists saved in documents, open Wi-Fi. Counts and settings only — never your documents, passwords, or file names.</p>
+    <label class="note" style="display:flex;gap:8px;align-items:flex-start;margin:8px 0;font-weight:400"><input type="checkbox" id="consent" style="width:auto;margin-top:3px"> <span>I own this computer or have permission to check it. I understand the check is <b>read-only</b>: it changes, deletes, installs, and sends nothing; it looks at settings and counts files but never opens documents or reads passwords; results stay on this device unless I choose to share them. It is not antivirus and does not guarantee security.</span></label>
+    <div class="row" id="deepBtns"></div>
+    <ol id="deepSteps" class="note" style="margin:8px 0 8px 18px;padding:0"></ol>
+    <div class="drop" id="drop">Then drop the <b>bridgehead-inventory</b> file here (it's in the Bridgehead folder on your Desktop)</div>
+    <input type="file" id="fileIn" multiple hidden>
+    <p class="note" id="deepMsg"></p>
+  </div>
+  <button class="btn p big" onclick="go(2)">See my results →</button>
+  <p class="note" id="needMore" style="text-align:center"></p>
+</div>
+
+<div id="v-res" class="hide">
+  <div class="steps"><i class="on"></i><i class="on"></i><i class="on"></i></div>
+  <div id="res"></div>
+  <div class="card" id="gate">
+    <h2>Get your full report &amp; fix plan — free</h2>
+    <p>Every fix, step by step. Which upgrades fit your business and what each one saves. A 90-day plan in plain English. No obligation.</p>
+    <label>Your name</label><input id="g_name" autocomplete="name">
+    <label>Business name</label><input id="g_biz" autocomplete="organization">
+    <label>Best phone</label><input id="g_phone" autocomplete="tel" inputmode="tel"><label>Email (so we can reply)</label><input id="g_email" type="email" autocomplete="email" inputmode="email"><div style="position:absolute;left:-9999px;height:0;overflow:hidden" aria-hidden="true"><label>Leave this empty<input id="g_hp" tabindex="-1" autocomplete="off"></label></div>
+    <label>What matters most?</label>
+    <select id="g_want"><option>Save money</option><option>Fix what's broken</option><option>Upgrade to better tools</option><option>All of the above</option></select>
+    <div id="reqBox" hidden><button class="btn p big" style="margin-top:12px" id="reqBtn" type="button" onclick="sendRequest()">Send my request to Bridgehead</button><label class="note" style="display:flex;gap:8px;align-items:flex-start;margin:10px 0;font-weight:400"><input type="checkbox" id="reqConsent" style="width:auto;margin-top:3px"><span id="reqConsentText"></span></label><p class="note" id="reqNote"></p><details id="reqDet"><summary>See exactly what will be sent</summary><pre id="reqPre" style="white-space:pre-wrap;word-break:break-word;max-height:260px;overflow:auto;font-size:.72rem;background:var(--soft);padding:10px;margin-top:8px"></pre></details><div id="reqMsg" role="status" aria-live="polite"></div></div>
+    <button class="btn p big" style="margin-top:12px" onclick="sendIt()">Email me my full report</button>
+    <p class="note">This opens your own email with your results filled in — you see exactly what's sent before you hit Send.</p>
+    <div class="row"><button class="btn s" onclick="copyIt()">Copy my results instead</button><span class="note" id="copyMsg"></span></div>
+  </div>
+  <p class="note" style="text-align:center"><a href="#" onclick="go(1);return false">← Change my answers</a> · <a href="#" onclick="startOver();return false">Start over (clear this device)</a></p>
+  <p class="note" style="margin-top:18px">Bridgehead Checkup is an informational tool, not antivirus and not a security or savings guarantee. Results and estimates are general and based on what you entered and what this device reports. Suggestions are settings you control — make changes only if you're comfortable, or ask someone you trust. Provided as-is.</p>
+</div>
+
+<p id="legalLinks" class="note" style="margin:18px 0 4px"></p></main>
+<script type="text/plain" id="c-win"># Bridgehead Check v4 - Windows 7 / 8 / 10 / 11 - READ-ONLY - live results
+# Collects: OS version, installed program names, running process names, COUNTS of data-file types on every local and mapped drive.
+# Never collects: file names, file contents, passwords, customer data, or panel codes. Stops itself after 15 minutes.
+# It changes, deletes, and installs nothing, and sends nothing anywhere. Close the window at any time to stop it.
+$ErrorActionPreference = 'SilentlyContinue'
+Write-Host 'Bridgehead Check - READ-ONLY. It changes nothing on this computer. Close this window any time to stop.' -ForegroundColor Cyan
+$exts = @('.qbw','.qbb','.qbm','.iif','.qbo','.ptb','.xls','.xlsx','.xlsm','.csv','.mdb','.accdb','.mde','.dbf','.dbc','.fpt','.ntx','.px','.wk1','.wk3','.wk4','.123','.wb1','.qpw','.fp5','.fp7','.fmp12','.nsf','.pst','.ost','.wpd','.doc','.docx','.pdf','.mdf','.pad','.numbers','.pages','.cwk')
+$skip = @('windows','program files','program files (x86)','programdata','appdata','$recycle.bin','system volume information','winsxs','perflogs','node_modules','.git','recovery')
+$dir = Join-Path ([Environment]::GetFolderPath('Desktop')) 'Bridgehead'
+New-Item -ItemType Directory -Force -Path $dir | Out-Null
+$out = Join-Path $dir ('bridgehead-inventory-' + (Get-Date -Format 'HHmmss') + '.txt')
+$L = New-Object System.Collections.ArrayList
+$os = Get-WmiObject Win32_OperatingSystem
+[void]$L.Add('BHv1|OS|' + $os.Caption + '|' + $os.Version)
+$seen = @{}
+$keys = @('HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*','HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*','HKCU:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*')
+foreach ($k in $keys) {
+  Get-ItemProperty $k | Where-Object { $_.DisplayName } | ForEach-Object {
+    $n = ($_.DisplayName -replace '\|','/').Trim()
+    if (-not $seen.ContainsKey($n)) { $seen[$n] = 1; [void]$L.Add('BHv1|APP|' + $n + '|' + $_.DisplayVersion + '|' + ($_.Publisher -replace '\|','/')) }
+  }
+}
+Get-Process | ForEach-Object { $_.ProcessName } | Sort-Object -Unique | ForEach-Object { [void]$L.Add('BHv1|PROC|' + $_) }
+# ---- Security check: common weak spots. READ-ONLY. Reports status only - never passwords, file names, or network names. ----
+Write-Host 'Bridgehead: checking common weak spots (read-only)...' -ForegroundColor Yellow
+function Sec($k, $s, $d) { [void]$L.Add('BHv1|SEC|' + $k + '|' + $s + '|' + ((('' + $d) -replace '\|', '/') -replace '[\r\n]+', ' ')) }
+$av = @(Get-WmiObject -Namespace 'root\SecurityCenter2' -Class AntiVirusProduct)
+if ($av.Count -gt 0) {
+  $ok = $false; $onAny = $false; $names = @()
+  foreach ($a in $av) {
+    $names += $a.displayName
+    $hex = [Convert]::ToString([int]$a.productState, 16).PadLeft(6, '0')
+    $on = @('10','11') -contains $hex.Substring(2, 2); $cur = $hex.Substring(4, 2) -eq '00'
+    if ($on) { $onAny = $true; if ($cur) { $ok = $true } }
+  }
+  if ($ok) { Sec 'av' 'ok' ($names -join ', ') } elseif ($onAny) { Sec 'av' 'warn' ($names -join ', ') } else { Sec 'av' 'risk' ($names -join ', ') }
+} else { Sec 'av' 'unknown' 'Not reported on this Windows edition' }
+$fw = @()
+foreach ($p in @('DomainProfile','StandardProfile','PublicProfile')) {
+  $v = (Get-ItemProperty ('HKLM:\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\' + $p)).EnableFirewall
+  if ($v -ne $null) { $fw += ($p.Replace('Profile', '').Replace('Standard', 'Private') + ' ' + $(if ($v -eq 1) { 'on' } else { 'OFF' })) }
+}
+if ($fw.Count -eq 0) { Sec 'firewall' 'unknown' '' } elseif (($fw -join ' ') -match 'OFF') { Sec 'firewall' 'risk' ($fw -join ', ') } else { Sec 'firewall' 'ok' ($fw -join ', ') }
+$last = $null
+foreach ($h in @(Get-WmiObject Win32_QuickFixEngineering)) { try { $d = [datetime]$h.InstalledOn; if (-not $last -or $d -gt $last) { $last = $d } } catch {} }
+if ($last) { $days = ((Get-Date) - $last).Days; Sec 'updates' $(if ($days -le 45) { 'ok' } elseif ($days -le 90) { 'warn' } else { 'risk' }) ('' + $days + ' days since the last update') } else { Sec 'updates' 'unknown' '' }
+try { $up = ((Get-Date) - $os.ConvertToDateTime($os.LastBootUpTime)).Days; Sec 'uptime' $(if ($up -gt 30) { 'warn' } else { 'ok' }) ('' + $up + ' days since last restart') } catch { Sec 'uptime' 'unknown' '' }
+$rdp = (Get-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server').fDenyTSConnections
+if ($rdp -eq 0) { Sec 'rdp' 'warn' 'Remote Desktop is on' } elseif ($rdp -eq 1) { Sec 'rdp' 'ok' 'Remote Desktop is off' }
+$wl = Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon'
+if ($wl.AutoAdminLogon -eq '1') { if ($wl.PSObject.Properties['DefaultPassword']) { Sec 'autologin' 'risk' 'Signs in automatically with a password stored in plain text' } else { Sec 'autologin' 'warn' 'Signs in automatically' } } else { Sec 'autologin' 'ok' '' }
+$grp = whoami /groups 2>$null
+if ($grp) { if (($grp | Out-String) -match 'S-1-5-32-544') { Sec 'admin' 'warn' 'Everyday account has administrator rights' } else { Sec 'admin' 'ok' 'Standard account' } }
+$guest = Get-WmiObject Win32_UserAccount -Filter 'LocalAccount=True' | Where-Object { $_.SID -match '-501$' }
+if ($guest) { if (-not $guest.Disabled) { Sec 'guest' 'warn' 'Guest account is on' } else { Sec 'guest' 'ok' '' } }
+$rt = 'teamviewer|anydesk|screenconnect|connectwise|logmein|splashtop|ultraviewer|rustdesk|supremo|vnc|ammyy|remotepc|zohoassist|getscreen|quickassist'
+$run = @($L | Where-Object { $_ -like 'BHv1|PROC|*' } | ForEach-Object { $_.Substring(10) } | Where-Object { $_ -match $rt })
+$ins = @($L | Where-Object { $_ -like 'BHv1|APP|*' } | Where-Object { $_ -match $rt } | ForEach-Object { ($_ -split '\|')[2] })
+if ($run.Count -gt 0) { Sec 'remote' 'warn' ('Running now: ' + ($run -join ', ')) } elseif ($ins.Count -gt 0) { Sec 'remote' 'info' ('Installed: ' + (($ins | Select-Object -First 5) -join ', ')) } else { Sec 'remote' 'ok' 'None found' }
+$ports = @{}; $rp = @{ '21' = 'FTP'; '23' = 'Telnet'; '3389' = 'Remote Desktop'; '5900' = 'VNC'; '5938' = 'TeamViewer' }
+netstat -ano | Select-String 'LISTENING' | ForEach-Object { $c = ($_.Line.Trim() -split '\s+'); if ($c.Count -ge 2 -and $c[1] -notmatch '^(127\.|\[::1\])') { $ports[$c[1].Substring($c[1].LastIndexOf(':') + 1)] = 1 } }
+$hit = @($rp.Keys | Where-Object { $ports.ContainsKey($_) } | ForEach-Object { $rp[$_] })
+if ($hit.Count -gt 0) { Sec 'ports' 'warn' ('Open to the network: ' + ($hit -join ', ')) } else { Sec 'ports' 'ok' ('' + $ports.Count + ' open ports, none of the risky ones') }
+$wa = netsh wlan show interfaces 2>$null | Select-String '^\s*Authentication\s*:\s*(.+)$' | Select-Object -First 1
+if ($wa) { $au = $wa.Matches[0].Groups[1].Value.Trim(); if ($au -match 'Open|WEP') { Sec 'wifi' 'risk' ('Wi-Fi security: ' + $au) } else { Sec 'wifi' 'ok' ('Wi-Fi security: ' + $au) } }
+$shr = @(Get-WmiObject Win32_Share | Where-Object { $_.Name -notmatch '\$$' } | ForEach-Object { $_.Name })
+if ($shr.Count -gt 0) { Sec 'shares' 'info' ('' + $shr.Count + ' shared folder(s): ' + (($shr | Select-Object -First 6) -join ', ')) } else { Sec 'shares' 'ok' 'No shared folders' }
+$sd = Get-WmiObject Win32_LogicalDisk -Filter ("DeviceID='" + $env:SystemDrive + "'")
+if ($sd -and $sd.Size) { $pct = [math]::Round($sd.FreeSpace / $sd.Size * 100); Sec 'disk' $(if ($pct -lt 10) { 'risk' } elseif ($pct -lt 20) { 'warn' } else { 'ok' }) ('' + [math]::Round($sd.FreeSpace / 1GB) + ' GB free of ' + [math]::Round($sd.Size / 1GB) + ' GB (' + $pct + '%)') }
+$tsz = 0; Get-ChildItem -Path $env:TEMP -Recurse -Force | Where-Object { -not $_.PSIsContainer } | ForEach-Object { $tsz += $_.Length }
+$tg = [math]::Round($tsz / 1GB, 1); Sec 'temp' $(if ($tg -ge 2) { 'warn' } else { 'ok' }) ('' + $tg + ' GB of temporary files')
+$bl = Get-WmiObject -Namespace 'root\CIMV2\Security\MicrosoftVolumeEncryption' -Class Win32_EncryptableVolume -Filter ("DriveLetter='" + $env:SystemDrive + "'")
+if ($bl) { if ($bl.ProtectionStatus -eq 1) { Sec 'encrypt' 'ok' 'BitLocker on' } else { Sec 'encrypt' 'warn' 'BitLocker off' } } else { Sec 'encrypt' 'unknown' 'Needs an administrator to check' }
+$st = @()
+foreach ($k in @('HKLM:\Software\Microsoft\Windows\CurrentVersion\Run','HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Run','HKCU:\Software\Microsoft\Windows\CurrentVersion\Run')) {
+  $p = Get-ItemProperty $k; if ($p) { $p.PSObject.Properties | Where-Object { $_.Name -notlike 'PS*' } | ForEach-Object { $st += $_.Name; [void]$L.Add('BHv1|START|' + ($_.Name -replace '\|', '/')) } }
+}
+Sec 'startup' $(if ($st.Count -gt 12) { 'warn' } else { 'info' }) ('' + $st.Count + ' start automatically: ' + (($st | Select-Object -First 20) -join ', '))
+$ex = @()
+foreach ($b in @("$env:LOCALAPPDATA\Google\Chrome\User Data\Default\Extensions", "$env:LOCALAPPDATA\Microsoft\Edge\User Data\Default\Extensions")) {
+  if (Test-Path $b) { Get-ChildItem -Path $b | Where-Object { $_.PSIsContainer } | ForEach-Object {
+    $m = Get-ChildItem -Path $_.FullName -Recurse -Filter 'manifest.json' | Select-Object -First 1
+    if ($m) { $t = [IO.File]::ReadAllText($m.FullName); $bn = $(if ($b -match 'Edge') { 'Edge' } else { 'Chrome' })
+      if ($t -match '"name"\s*:\s*"([^"]+)"' -and $matches[1] -notlike '__MSG_*') { $ex += $matches[1]; [void]$L.Add('BHv1|EXTN|' + $bn + '|' + ($matches[1] -replace '\|', '/')) } else { $ex += '(unnamed)' } } } }
+}
+if ($ex.Count -gt 0) { Sec 'ext' $(if ($ex.Count -gt 10) { 'warn' } else { 'info' }) ('' + $ex.Count + ' browser extensions: ' + (($ex | Select-Object -Unique | Select-Object -First 15) -join ', ')) }
+# ---- AI tools: coding add-ons, local AI models, Windows Recall (names and on/off only) ----
+$vsd = Join-Path $env:USERPROFILE '.vscode\extensions'
+if (Test-Path $vsd) { Get-ChildItem -Path $vsd | Where-Object { $_.PSIsContainer } | ForEach-Object { [void]$L.Add('BHv1|VSX|' + ($_.Name -replace '-\d+(\.\d+)*.*$', '')) } }
+foreach ($lm in @(@('Ollama', (Join-Path $env:USERPROFILE '.ollama\models')), @('LM Studio', (Join-Path $env:USERPROFILE '.lmstudio\models')), @('LM Studio', (Join-Path $env:USERPROFILE '.cache\lm-studio\models')))) {
+  if (Test-Path $lm[1]) { $z = 0; Get-ChildItem -Path $lm[1] -Recurse -Force | Where-Object { -not $_.PSIsContainer } | ForEach-Object { $z += $_.Length }; [void]$L.Add('BHv1|AIOS|local|' + $lm[0] + '|' + [math]::Round($z / 1GB, 1) + ' GB of AI models') }
+}
+$rpol = (Get-ItemProperty 'HKCU:\Software\Policies\Microsoft\Windows\WindowsAI').DisableAIDataAnalysis
+if (Test-Path (Join-Path $env:LOCALAPPDATA 'CoreAIPlatform.00\UKP')) { if ($rpol -eq 1) { [void]$L.Add('BHv1|AIOS|recall|off|Recall data folder present, turned off by policy') } else { [void]$L.Add('BHv1|AIOS|recall|on|Windows Recall appears to be saving screen snapshots') } }
+$script:pw = 0
+$pwRx = '(?i)(passw|logins|credential).*\.(txt|docx?|xlsx?|csv|rtf|pdf)$'
+$cnt = @{}; $mb = @{}; $new = @{}
+$sw = [Diagnostics.Stopwatch]::StartNew(); $script:cut = $false; $script:last = 0
+function Write-BH($status) {
+  $T = New-Object System.Collections.ArrayList
+  [void]$T.Add('BHv1|META|collected|' + (Get-Date -Format 'yyyy-MM-dd') + '|windows-ps' + $PSVersionTable.PSVersion.Major + '|' + $status)
+  $T.AddRange($L)
+  [void]$T.Add('BHv1|SEC|pwfiles|' + $(if ($script:pw -gt 0) { 'warn' } else { 'ok' }) + '|' + $(if ($script:pw -gt 0) { '' + $script:pw + ' document(s) look like password lists' } else { 'None found' }))
+  foreach ($e in @($cnt.Keys)) { [void]$T.Add('BHv1|EXT|' + $e + '|' + $cnt[$e] + '|' + [math]::Round($mb[$e] / 1MB, 1) + '|' + $new[$e].ToString('yyyy-MM-dd')) }
+  $T | Out-File -FilePath ($out + '.tmp') -Encoding UTF8
+  Copy-Item -Path ($out + '.tmp') -Destination $out -Force
+  Remove-Item -Path ($out + '.tmp') -Force
+}
+function Walk($p) {
+  if ($sw.Elapsed.TotalMinutes -gt 15) { $script:cut = $true; return }
+  Get-ChildItem -LiteralPath $p -Force | ForEach-Object {
+    if ($_.PSIsContainer) {
+      if (($skip -notcontains $_.Name.ToLower()) -and -not ($_.Attributes -band [IO.FileAttributes]::ReparsePoint)) { Walk $_.FullName }
+    } else {
+      if ($_.Name -match $pwRx) { $script:pw++ }
+      $e = $_.Extension.ToLower()
+      if ($exts -contains $e) {
+        if (-not $cnt.ContainsKey($e)) { $cnt[$e] = 0; $mb[$e] = 0; $new[$e] = $_.LastWriteTime }
+        $cnt[$e]++; $mb[$e] += $_.Length
+        if ($_.LastWriteTime -gt $new[$e]) { $new[$e] = $_.LastWriteTime }
+      }
+      if (($sw.Elapsed.TotalSeconds - $script:last) -gt 5) { $script:last = $sw.Elapsed.TotalSeconds; Write-BH 'running' }
+    }
+  }
+}
+Write-BH 'running'
+Write-Host ('Bridgehead: scanning drives (counts only). Live results: ' + $out) -ForegroundColor Yellow
+Get-ChildItem -Path ($env:SystemDrive + '\Users') -Force | Where-Object { $_.PSIsContainer } | ForEach-Object { $o = Join-Path $_.FullName 'AppData\Local\Microsoft\Outlook'; if (Test-Path $o) { Walk $o } }
+Get-PSDrive -PSProvider FileSystem | Where-Object { $_.Root -and (Test-Path $_.Root) } | ForEach-Object { [void]$L.Add('BHv1|DRIVE|' + $_.Name); Walk $_.Root }
+if ($script:cut) { Write-BH 'partial-15min' } else { Write-BH 'complete' }
+Write-Host ''
+Write-Host ('Bridgehead: done. Saved to ' + $out) -ForegroundColor Green
+</script>
+<script type="text/plain" id="c-mac">/bin/bash <<'BRIDGEHEAD'
+# Bridgehead Check v4 - Mac (any macOS) - READ-ONLY - live results
+# It changes, deletes, and installs nothing, and sends nothing anywhere. Close Terminal any time to stop it.
+# Collects: macOS version, app names, running process names, COUNTS of data-file types in user folders and connected drives.
+# Never collects: file names, file contents, passwords, customer data, or panel codes. Stops itself after 15 minutes.
+DIR="$HOME/Desktop/Bridgehead"; mkdir -p "$DIR"
+OUT="$DIR/bridgehead-inventory-$(date +%H%M%S).txt"
+EXTS="qbw qbb qbm iif qbo ptb xls xlsx xlsm csv mdb accdb dbf dbc fpt px wk1 wk3 wk4 123 wb1 qpw fp5 fp7 fmp12 nsf pst ost olm wpd doc docx pdf numbers pages key cwk cws bentodb"
+ROOTS=("$HOME/Documents" "$HOME/Desktop" "$HOME/Downloads" "$HOME/Library/CloudStorage" "$HOME/Library/Mobile Documents" "/Users/Shared")
+for v in /Volumes/*; do
+  case "$v" in *"Macintosh HD"*|*"Time Machine"*|*Backups*|*Recovery*) ;; *) [ -d "$v" ] && ROOTS+=("$v");; esac
+done
+ARGS=(); for e in $EXTS; do ARGS+=(-o -iname "*.$e"); done; unset 'ARGS[0]'
+TMP=$(mktemp)
+echo "Bridgehead Check - READ-ONLY. It changes nothing on this Mac. Close Terminal any time to stop."
+echo "Bridgehead: scanning (counts only). If your Mac asks to allow Terminal access to folders, click OK."
+{
+  echo "BHv1|OS|macOS $(sw_vers -productVersion)|$(uname -m)"
+  for a in /Applications/*.app /Applications/*/*.app "$HOME/Applications"/*.app; do
+    [ -d "$a" ] || continue
+    n=$(basename "$a" .app)
+    v=$(defaults read "$a/Contents/Info" CFBundleShortVersionString 2>/dev/null)
+    echo "BHv1|APP|$n|$v|"
+  done
+  ps -axco comm= | sort -u | while read -r p; do echo "BHv1|PROC|$p"; done
+  for r in "${ROOTS[@]}"; do [ -d "$r" ] && echo "BHv1|DRIVE|$(basename "$r")"; done
+  # ---- Security check: common weak spots. READ-ONLY. Status only - never passwords, file names, or network names. ----
+  sec(){ echo "BHv1|SEC|$1|$2|$(printf '%s' "$3" | tr '|\n' '/ ')"; }
+  case "$(fdesetup status 2>/dev/null)" in *"is On"*) sec encrypt ok "FileVault on";; *"is Off"*) sec encrypt warn "FileVault off";; *) sec encrypt unknown "";; esac
+  case "$(/usr/libexec/ApplicationFirewall/socketfilterfw --getglobalstate 2>/dev/null)" in *enabled*) sec firewall ok "Firewall on";; *disabled*) sec firewall warn "Firewall off";; *) sec firewall unknown "";; esac
+  case "$(spctl --status 2>/dev/null)" in *enabled*) sec gatekeeper ok "App protection (Gatekeeper) on";; *disabled*) sec gatekeeper risk "App protection (Gatekeeper) off";; esac
+  case "$(csrutil status 2>/dev/null)" in *enabled*) sec sip ok "System protection on";; *disabled*) sec sip risk "System protection off";; esac
+  sec av ok "Built-in malware protection (XProtect)"
+  if id -Gn 2>/dev/null | grep -qw admin; then sec admin warn "Everyday account has administrator rights"; else sec admin ok "Standard account"; fi
+  if [ -e /etc/kcpassword ]; then sec autologin warn "Signs in automatically"; else sec autologin ok ""; fi
+  bt=$(sysctl -n kern.boottime 2>/dev/null | sed -n 's/.*sec = \([0-9]*\).*/\1/p'); if [ -n "$bt" ]; then up=$(( ($(date +%s) - bt) / 86400 )); if [ $up -gt 30 ]; then sec uptime warn "$up days since last restart"; else sec uptime ok "$up days since last restart"; fi; fi
+  RT='teamviewer|anydesk|screenconnect|connectwise|logmein|splashtop|ultraviewer|rustdesk|supremo|vnc|ammyy|remotepc|zohoassist|getscreen'
+  run=$(ps -axco comm= 2>/dev/null | grep -iE "$RT" | sort -u | tr '\n' ',' | sed 's/,$//')
+  ins=$(ls /Applications 2>/dev/null | grep -iE "$RT" | sed 's/\.app$//' | head -5 | tr '\n' ',' | sed 's/,$//')
+  if [ -n "$run" ]; then sec remote warn "Running now: $run"; elif [ -n "$ins" ]; then sec remote info "Installed: $ins"; else sec remote ok "None found"; fi
+  lp=$(netstat -an -p tcp 2>/dev/null | awk '/LISTEN/ && $4 !~ /^127\.|^::1/ {n=split($4,a,"."); print a[n]}' | sort -u)
+  hit=""; for p in $lp; do case $p in 22) hit="$hit Remote-Login(SSH)";; 5900) hit="$hit Screen-Sharing";; 3283) hit="$hit Remote-Management";; 21) hit="$hit FTP";; 23) hit="$hit Telnet";; esac; done
+  if [ -n "$hit" ]; then sec ports warn "Open to the network:$hit"; else sec ports ok "$(echo "$lp" | grep -c .) open ports, none of the risky ones"; fi
+  ws=$(system_profiler SPAirPortDataType 2>/dev/null | awk '/Current Network Information:/{f=1} f && /Security:/{sub(/.*Security: */,""); print; exit}')
+  if [ -n "$ws" ]; then case "$ws" in *None*|*Open*|*WEP*) sec wifi risk "Wi-Fi security: $ws";; *) sec wifi ok "Wi-Fi security: $ws";; esac; fi
+  df -k / 2>/dev/null | awk 'NR==2{t=$2; f=$4; p=int(f*100/t); s=(p<10?"risk":(p<20?"warn":"ok")); printf "BHv1|SEC|disk|%s|%d GB free of %d GB (%d%%)\n", s, f/1048576, t/1048576, p}'
+  ck=$(du -sk "$HOME/Library/Caches" 2>/dev/null | awk '{printf "%.1f", $1/1048576}'); [ -n "$ck" ] && sec temp "$(awk -v c="$ck" 'BEGIN{print (c>=2?"warn":"ok")}')" "$ck GB of cache files"
+  la=$(ls "$HOME/Library/LaunchAgents" /Library/LaunchAgents /Library/LaunchDaemons 2>/dev/null | grep '\.plist$' | sed 's/\.plist$//'); nla=$(echo "$la" | grep -c .)
+  echo "$la" | grep . | while read -r x; do echo "BHv1|START|$x"; done
+  # ---- AI tools: coding add-ons, local AI models (names and sizes only) ----
+  ls "$HOME/.vscode/extensions" 2>/dev/null | sed -E 's/-[0-9]+(\.[0-9]+)*.*$//' | sort -u | while read -r x; do [ -n "$x" ] && echo "BHv1|VSX|$x"; done
+  for lm in "Ollama:$HOME/.ollama/models" "LM Studio:$HOME/.lmstudio/models" "LM Studio:$HOME/.cache/lm-studio/models"; do d="${lm#*:}"; [ -d "$d" ] && echo "BHv1|AIOS|local|${lm%%:*}|$(du -sk "$d" 2>/dev/null | awk '{printf "%.1f", $1/1048576}') GB of AI models"; done
+  sec startup "$( [ $nla -gt 15 ] && echo warn || echo info )" "$nla start automatically: $(echo "$la" | head -20 | tr '\n' ',' | sed 's/,$//')"
+  exn=""; nex=0; for m in "$HOME/Library/Application Support/Google/Chrome/Default/Extensions"/*/*/manifest.json; do [ -f "$m" ] || continue; nex=$((nex+1)); n=$(sed -n 's/.*"name"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' "$m" | head -1); case "$n" in __MSG_*|"") ;; *) exn="$exn$n, "; echo "BHv1|EXTN|Chrome|$n";; esac; done
+  [ $nex -gt 0 ] && sec ext "$( [ $nex -gt 10 ] && echo warn || echo info )" "$nex browser extensions: ${exn%, }"
+  npw=$(find "$HOME/Documents" "$HOME/Desktop" "$HOME/Downloads" -type f \( -iname '*passw*' -o -iname '*logins*' -o -iname '*credential*' \) 2>/dev/null | grep -icE '\.(txt|docx?|xlsx?|csv|rtf|pdf|numbers|pages)$')
+  if [ "${npw:-0}" -gt 0 ]; then sec pwfiles warn "$npw document(s) look like password lists"; else sec pwfiles ok "None found"; fi
+} > "$TMP"
+STATUS=complete
+: > "$TMP.f"
+writeout() {
+  { echo "BHv1|META|collected|$(date +%Y-%m-%d)|mac|$1"; cat "$TMP"
+    awk -F'|' 'NF>=3{n=$NF; sub(/.*\./,"",n); e="."tolower(n); c[e]++; s[e]+=$1; if($2>m[e])m[e]=$2} END{for(e in c) printf "%s %d %.1f %d\n", e, c[e], s[e]/1048576, m[e]}' "$TMP.f" |
+    while read -r e c mb t; do echo "BHv1|EXT|$e|$c|$mb|$(date -r "$t" +%Y-%m-%d)"; done
+  } > "$OUT.tmp" && mv -f "$OUT.tmp" "$OUT"
+}
+( softwareupdate -l > "$TMP.su" 2>&1 ) &
+SUP=$!
+writeout running
+echo "Live results: $OUT"
+( for r in "${ROOTS[@]}"; do [ -d "$r" ] && find "$r" -type f \( "${ARGS[@]}" \) -exec stat -f '%z|%m|%N' {} + 2>/dev/null; done ) > "$TMP.f" &
+PID=$!; S=0
+while kill -0 $PID 2>/dev/null; do sleep 5; S=$((S+5)); writeout running; if [ $S -ge 900 ]; then pkill -P $PID 2>/dev/null; kill $PID 2>/dev/null; STATUS=partial-15min; fi; done
+W=0; while kill -0 $SUP 2>/dev/null && [ $W -lt 60 ]; do sleep 2; W=$((W+2)); done; kill $SUP 2>/dev/null
+if grep -q "No new software available" "$TMP.su" 2>/dev/null; then echo "BHv1|SEC|updates|ok|No updates waiting" >> "$TMP"
+elif grep -q "Label:" "$TMP.su" 2>/dev/null; then n=$(grep -c "Label:" "$TMP.su"); echo "BHv1|SEC|updates|warn|$n update(s) waiting" >> "$TMP"
+else echo "BHv1|SEC|updates|unknown|Could not check (offline?)" >> "$TMP"; fi
+rm -f "$TMP.su"
+writeout "$STATUS"
+rm -f "$TMP" "$TMP.f"
+echo ""
+echo "Bridgehead: done. Saved to $OUT"
+BRIDGEHEAD
+</script>
+<script>
+/* ===== Owner settings — change these lines ===== */
+const OWNER_NAME = 'Wayne Jordan';
+const OWNER_EMAIL = 'bridgeheadlink@gmail.com';
+const SCAN_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwSIBYW2NrjVgth6tiSDrGC6gOvTzn2vVtxLsbIs21TJn5G8Zshmb5jdOC4eqQSHlnrRQ/exec';   /* the web app address from the Apps Script setup. Blank = email only. */
+const SCAN_TOKEN = 'bh-bdae4202b41d2bdd0385';   /* must match TOKEN in the Apps Script */
+let REQUEST_MODE = 'consult';   /* fallback launch level. 'consult' = contact form only. 'minimal' = contact details only. 'full' = also answers, results, scan. The Settings tab in the Google sheet overrides this. */
+const NOTICE_REQUIRED = true;   /* true: the Send button stays closed until PRIVACY_URL is filled in */
+let PRIVACY_URL = '';   /* fallback privacy notice address. The Settings tab overrides it. */
+let TERMS_URL = '';   /* fallback terms address. The Settings tab overrides it. */
+let NOTICE_VERSION = 'draft-1';   /* fallback notice version. The Settings tab overrides it. */
+let CONSENT_TEXT = 'I agree that Bridgehead may store what I send here and contact me about my request, as described in the privacy notice and terms.';   /* fallback wording. The Settings tab overrides it. DRAFT for your attorney to approve. */
+/* =================================================== */
+const $=id=>document.getElementById(id);
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function store(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+function load(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}}
+function pushU(a,v){if(!a.includes(v))a.push(v)}
+function setTheme(t){document.documentElement.setAttribute('data-theme',t);store('bhc_theme',t)}
+setTheme(load('bhc_theme','light'));
+$('themeBtn').onclick=()=>setTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark');
+
+const CATS={FIN:'Finance & Billing',CRM:'Customers & Sales',OPS:'Service & Dispatch',MON:'Monitoring & Panels',DATA:'Spreadsheets & Databases',DOC:'Documents & Comms',IT:'IT & Access',HR:'Payroll & HR',OTH:'Other'};
+const LEGAL='Central-station / monitoring contract → legal review before any account transfer.';
+const LIB=[
+['qbd','QuickBooks Desktop (Windows or Mac)','FIN','A','migrate',['quickbooks','qbdbmgr','qbw32','intuit'],['.qbw','.qbb','.qbm','.iif','.tlg','.nd'],'Make a verified .QBB backup and copy it offsite today. Move the admin login into the HQ vault.','Weekly export of customer list, items, and open AR (IIF/CSV) into Core staging. Freeze chart-of-accounts changes.','Core · Finance',''],
+['qbo','QuickBooks Online','FIN','C','hook',['quickbooks online'],['.qbo'],'Add an HQ accountant seat so HQ can see the books.','API hook: nightly sync of customers and invoices.','Core · Finance (hook)',''],
+['sage50','Sage 50 / Peachtree','FIN','A','migrate',['peachtree','sage 50','sage50','peachw'],['.ptb','.ptx'],'Back up the whole company data folder and prove it restores on a second PC.','Monthly CSV export of customers, vendors, and AR aging until cutover.','Core · Finance',''],
+['sage100','Sage 100 / MAS 90','FIN','A','migrate',['sage 100','mas 90','mas90','mas 200'],[],'Find who holds the reseller/support contract and the license renewal date.','Scheduled export of master files (Visual Integrator / ODBC).','Core · Finance',''],
+['gp','Microsoft Dynamics GP','FIN','A','migrate',['dynamics gp','great plains'],[],'Record the GP version and confirm SQL backup jobs actually run.','Read-only SQL extract of customers and open AR.','Core · Finance',''],
+['xero','Xero','FIN','C','hook',['xero'],[],'Add an HQ advisor user.','API hook: nightly sync.','Core · Finance (hook)',''],
+['sedona','SedonaOffice','FIN','C','decide',['sedonaoffice','sedona office'],[],'Confirm SQL backups and who administers the database.','Read-only extract of customers, sites, RMR lines, service tickets.','Core · Customers & RMR',''],
+['stx','SecurityTrax','CRM','C','decide',['securitytrax'],[],'Get HQ admin access and a full account export.','API/export of leads, sales, install schedule.','Core · Customers & RMR',''],
+['act','Act! CRM','CRM','A','migrate',['act!','act by sage','act! premium','act! pro'],['.pad','.alf'],'Back up with Act!\'s own backup tool — copying files is not a backup.','CSV export of contacts and opportunities; map to Core fields.','Core · Customers & RMR',''],
+['goldmine','GoldMine','CRM','L','retire',['goldmine'],[],'Back up the database; record the version.','CSV export of contacts and history.','Core · Customers & RMR',''],
+['sfdc','Salesforce','CRM','C','hook',['salesforce'],[],'Confirm license count and owner.','API hook for accounts and opportunities.','Core · Customers & RMR (hook)',''],
+['manitou','Bold Manitou','MON','C','hook',['manitou','bold technologies'],[],'Confirm who owns the central-station relationship. Touch no account data yet.','Vendor interface for event history and account status.','Core · Monitoring (hook)',LEGAL],
+['masmind','MASterMind','MON','A','decide',['mastermind','monitoring automation systems'],[],'Contract custody first. Touch no account data yet.','Scheduled export of subscriber and RMR records after legal clears.','Core · Monitoring / RMR',LEGAL],
+['stages','DICE Stages','MON','C','hook',['dice stages','dice corporation'],[],'Contract custody first.','Vendor API/export after legal clears.','Core · Monitoring (hook)',LEGAL],
+['adc','Alarm.com / Resideo dealer portals','MON','C','hook',['alarm.com','total connect','alarmnet','resideo'],[],'Confirm the dealer account is registered to the right company and HQ holds an admin login.','Portal reporting/API for service plans and device status.','Core · Monitoring (hook)',''],
+['panelsw','Panel downloader software (DLS, Compass, Quickloader, RPS, ELK-RP)','MON','A','hook',['dls 5','dls-5','dls iv','dsc dls','compass downloader','honeywell compass','quickloader','pcd-windows','remote programming software','bosch rps','elk-rp','elkrp'],[],'Confirm installer/dealer code custody sits with HQ, not one tech. Lock the PC.','Panel files stay in the vendor tool. Track only which PC and which version.','Stays in vendor tool','Panel codes never enter Bridgehead or Core.'],
+['fsm','Field-service app (ServiceTitan, Jobber, ServiceTrade, Housecall Pro)','OPS','C','decide',['servicetitan','jobber','servicetrade','housecall'],[],'Get HQ admin access.','API hook for jobs and invoices during transition.','Core · Service & Dispatch',''],
+['xlsx','Microsoft Excel (current)','DATA','C','migrate',['microsoft excel','microsoft office','microsoft 365','office 16','office professional'],['.xlsx','.xlsm','.xlsb'],'Find the "master" workbooks. Copy to one shared folder with a date stamp. Stop emailing versions.','Map each master sheet\'s columns to a Core import template.','Core · module the sheet replaces',''],
+['xls','Excel 97–2003 workbooks','DATA','A','migrate',[],['.xls','.xlt'],'Re-save as .xlsx on a current PC; keep originals read-only.','Same column mapping as current Excel.','Core · module the sheet replaces',''],
+['lotus','Lotus 1-2-3','DATA','L','retire',['lotus 1-2-3','123w','smartsuite'],['.wk1','.wk3','.wk4','.123'],'Copy every file off the old machine today.','Convert via LibreOffice to .xlsx; spot-check formulas.','Core · module the sheet replaces',''],
+['quattro','Quattro Pro','DATA','L','retire',['quattro','wordperfect office'],['.wb1','.wb2','.wb3','.qpw'],'Copy files off the machine today.','Convert via LibreOffice to .xlsx.','Core · module the sheet replaces',''],
+['csv','CSV exports','DATA','C','migrate',[],['.csv'],'Collect them in one folder — easiest data on site.','Load straight into Core import templates.','Core staging',''],
+['access','Microsoft Access','DATA','A','migrate',['microsoft access','access runtime','msaccess'],['.mdb','.accdb','.mde','.accde'],'Copy the database while nobody has it open. Note who built it.','Export each table to CSV. Screenshot the forms people use — those are the real requirements.','Core · data migration',''],
+['dbase','dBase / FoxPro / Clipper','DATA','L','retire',['foxpro','visual foxpro','dbase','clipper'],['.dbf','.dbc','.fpt','.cdx','.ntx'],'Image the machine. Highest-risk item on site.','Open .DBF tables in LibreOffice and export to CSV.','Core · data migration',''],
+['paradox','Paradox','DATA','L','retire',['paradox'],['.px','.mb'],'Image the machine.','Convert tables to CSV with a Paradox-capable tool.','Core · data migration',''],
+['filemaker','FileMaker','DATA','A','migrate',['filemaker'],['.fp5','.fp7','.fmp12'],'Back up the file; capture the admin login.','Export tables to CSV/XLSX.','Core · data migration',''],
+['sqlx','SQL Server (an app has a real database behind it)','DATA','C','decide',['sql server'],['.mdf','.ldf'],'Find which application owns it; confirm backups run.','Read-only extract once the owning app is known.','Depends on owning app',''],
+['pervasive','Pervasive / Btrieve engine','DATA','L','retire',['pervasive','btrieve','actian psql'],[],'Identify which old app depends on it (often old accounting).','Export through the owning app.','Core · data migration',''],
+['dos','DOS-era application','DATA','L','retire',['dosbox','ntvdm','vdos'],[],'Image the machine. Photograph every screen staff use.','Print-to-file / report-to-text exports; rekey only open items.','Core · data migration',''],
+['outlook','Outlook mailbox archives (PST / OLM)','DOC','A','migrate',['microsoft outlook'],['.pst','.ost','.olm'],'PSTs are usually the shadow CRM. Back them up.','Move mail to the company tenant; pull contacts — not mail — into Core.','Company email tenant',''],
+['gws','Google Drive / Workspace','DOC','C','hook',['google drive','drive file stream','google workspace'],[],'Confirm it is a business account, not a personal Gmail.','Move shared files into the company tenant.','Company tenant',''],
+['notes','Lotus / HCL Notes','DOC','L','retire',['lotus notes','ibm notes','hcl notes'],['.nsf'],'Back up the .NSF files.','Export views to CSV.','Core · data migration',''],
+['wpd','WordPerfect','DOC','L','retire',['wordperfect'],['.wpd','.wp'],'Copy files off the machine.','Convert to .docx via LibreOffice.','Shared document library',''],
+['word','Word documents & forms','DOC','C','migrate',[],['.doc','.docx','.dotx'],'Pull the forms people actually use (work orders, agreements).','Rebuild forms in Core; existing signed agreements stay as records.','Core · Forms','Customer agreement / contract templates → legal review before reuse.'],
+['pdf','PDFs (scans, agreements, invoices)','DOC','C','migrate',[],['.pdf'],'Gather in one folder.','Index by document type, never by customer name.','Shared document library',''],
+['remote','Remote-access tools (TeamViewer, AnyDesk, LogMeIn, ScreenConnect)','IT','C','decide',['teamviewer','anydesk','logmein','screenconnect','connectwise control','splashtop'],[],'List who has remote access. Remove unknowns; rotate passwords.','Replace with HQ-managed remote support.','HQ IT standard','Unknown remote access = security finding → HQ IT.'],
+['backup','Backup software (Carbonite, Backblaze, Acronis, Veeam)','IT','C','hook',['carbonite','backblaze','acronis','veeam','idrive'],[],'Get the last successful backup date. Do a test restore.','Fold into the HQ backup standard.','HQ IT standard',''],
+['netsuite','NetSuite','FIN','C','hook',['netsuite'],[],'Add an HQ role with read access.','API hook (saved-search exports or SuiteTalk).','Core · Finance (hook)',''],
+['intacct','Sage Intacct','FIN','C','hook',['intacct'],[],'Add an HQ read-only user.','API hook for GL and AR.','Core · Finance (hook)',''],
+['billcom','Bill.com / AP automation','FIN','C','hook',['bill.com'],[],'Confirm who approves payments; add HQ visibility.','Hook payables data into Core Finance.','Core · Finance (hook)',''],
+['invest','Fund / investor platforms (Carta, DealCloud, Juniper Square, Allvue)','FIN','C','hook',['carta','dealcloud','juniper square','allvue'],[],'Confirm data ownership and admin access. These hold investor data.','Read-only reporting hook at most.','Stays in vendor tool','Investor / fund data → legal and Compliance review; never into Bridgehead.'],
+['daylite','Daylite (Mac CRM)','CRM','C','migrate',['daylite'],[],'Get admin access.','CSV export of contacts and opportunities.','Core · Customers & RMR',''],
+['iwork','Apple Numbers / Pages / Keynote','DATA','C','migrate',['=numbers','=pages','=keynote'],['.numbers','.pages','.key'],'Find the "master" Numbers sheets. Export a copy to .xlsx.','Map exported columns to Core import templates.','Core · module the sheet replaces',''],
+['appleworks','AppleWorks / ClarisWorks','DATA','L','retire',['appleworks','clarisworks'],['.cwk','.cws'],'Copy files off the old Mac today.','Open in LibreOffice and save as .xlsx / .docx.','Core · data migration',''],
+['bento','Bento (Mac database)','DATA','L','retire',['=bento'],['.bentodb'],'Export to CSV while the app still opens.','CSV into Core staging.','Core · data migration',''],
+['m365','Microsoft 365 (OneDrive, SharePoint, Teams)','DOC','C','hook',['onedrive','sharepoint','microsoft teams'],[],'Confirm the tenant is company-owned and HQ gets a global admin.','Tenant migration or federation with the HQ tenant.','Company tenant',''],
+['filesync','Dropbox / Box','DOC','C','decide',['dropbox','box drive','box sync'],[],'Business or personal accounts? Get admin.','Move shared folders into the company tenant.','Company tenant','Company data in personal cloud accounts → move before cutover.'],
+['icloud','iCloud Drive (personal Apple IDs)','DOC','C','decide',['icloud'],[],'Find company files living in personal iCloud.','Move into the company tenant.','Company tenant','Company data in personal iCloud accounts → move before cutover.'],
+['payroll','Payroll / HR service (ADP, Paychex, Gusto)','HR','C','hook',['adp workforce','adp run','paychex','gusto'],[],'Route to HR. Collect no personnel data here.','HR-led integration only.','HR system (outside Bridgehead)','Personnel data stays out of Bridgehead.']
+].map(a=>({id:a[0],n:a[1],c:a[2],e:a[3],a:a[4],k:a[5],x:a[6],s:a[7],b:a[8],t:a[9],f:a[10]}));
+
+
+
+/* ---------- Questions (ids shared with the Discovery Kit where they match) ---------- */
+// option: [label, score 0-3, finding?] ; finding: [severity, title, fix, upgrade]
+const UP={ai:'AI that fits your work (tools + simple rules)',sec:'Security tune-up',crm:'One customer system (CRM)',books:'Cloud accounting',bill:'Automated recurring billing',sched:'Scheduling & dispatch app',backup:'Automatic offsite backup',pw:'Password manager + access review',hw:'Computer refresh plan',stack:'Fewer, connected apps',sync:'Connect your apps so data flows once',web:'Website tune-up (address versions, padlock, speed)'};
+const QS=[
+{id:'biz',t:'What kind of business?',o:[['Security / alarm dealer',2],['Solar or contractor',2],['Finance or investment',2],['Professional services',2],['Retail or other',2]],noscore:1},
+{id:'size',t:'How many people on the team?',o:[['1–5',2],['6–15',2],['16–40',2],['40+',2]],noscore:1},
+{id:'acct',t:'Your books run on…',o:[['QuickBooks Desktop',1,['med','Accounting is on desktop software','Prove the backup restores; plan the move to cloud books.','books']],['QuickBooks Online, Xero, or other cloud',3],['Excel or paper',0,['high','Books run on spreadsheets or paper','Move to real accounting software before the next tax season.','books']],['Not sure',0,['med','Nobody\'s sure what runs the books','Find out — that\'s step one of every fix.','books']]]},
+{id:'q1',t:'Where do customer records live?',o:[['Accounting software or CRM',3],['Spreadsheets',2,['low','Customer list lives in spreadsheets','Pick one home for customer records.','crm']],['Mix, including paper',1,['med','Customer info is split across systems and paper','Pick one home for customer records.','crm']],['Mostly paper / someone\'s head',0,['high','Customer records live on paper or in someone\'s head','Capture every active customer in one system.','crm']]]},
+{id:'q2',t:'How do you bill customers — especially recurring charges?',o:[['Auto-billed from a system',3],['Manual invoices from software',2,['low','Invoices are created by hand','Automate the repeat invoices first.','bill']],['Spreadsheet + manual',1,['med','Billing is run from a spreadsheet','Reconcile who\'s billed vs. who should be — leaks hide here.','bill']],['Paper / ad hoc',0,['high','Billing is paper or ad hoc — money is likely slipping through','Reconcile every recurring customer this month.','bill']]]},
+{id:'q3',t:'How is work scheduled?',o:[['Scheduling software',3],['Shared calendar',2],['Spreadsheet / whiteboard',1,['med','Scheduling lives on a whiteboard or spreadsheet','Move to a shared schedule everyone can see.','sched']],['Phone calls & memory',0,['high','Scheduling runs on phone calls and memory','Start a shared schedule today.','sched']]]},
+{id:'q4',t:'Backups of business data?',o:[['Automatic, offsite, tested',3],['Automatic, local only',2,['med','Backups are local only — one fire or theft away','Add an offsite copy.','backup']],['Manual, now and then',1,['high','Backups are manual and irregular','Turn on automatic offsite backup this week.','backup']],['None / nobody knows',0,['high','No reliable backup','Back up today. Then automate it.','backup']]]},
+{id:'q8',t:'Admin passwords & who has access?',o:[['In a password vault, access known',3],['Mostly known',2],['One person knows',1,['high','One person holds the keys','Move admin passwords into a shared vault.','pw']],['Nobody is sure',0,['high','Nobody\'s sure who has access','Review every login and remote-access tool; change passwords.','pw']]]},
+{id:'q6',t:'Oldest computer still used every day?',o:[['Windows 11 / Mac on a current macOS',3],['Windows 10 / Mac a few versions back',2,['med','Computers running out-of-support systems','Plan upgrades before something breaks.','hw']],['Windows 7 / 8 / Mac stuck on macOS 10.x',1,['high','Computers years past security updates','Replace or isolate them now.','hw']],['XP or older / DOS / pre-2010 Mac',0,['high','Vintage computers still running the business','Copy the data off today; replace the machine.','hw']]]},
+{id:'apps',t:'How many separate apps or logins does a normal day take?',o:[['1–3',3],['4–7',2],['8–12',1,['med','8–12 apps and logins a day','Cut overlapping subscriptions; connect the rest.','stack']],['13+',0,['high','13+ apps and logins a day','Consolidate — you\'re paying for overlap.','stack']]]},
+{id:'ai',t:'How does your team use AI today?',o:[['Built into how we work, with rules',3],['Paid tools for some work',2,['low','AI is used without written rules','Write one page: approved tools, and what never gets pasted.','ai']],['A few people on free tools',1,['med','AI is used on free personal accounts','Set a simple rule today: no customer data in free AI tools.','ai']],['Not at all / not sure',1,['low','No AI in the workflow yet — time left on the table','Start with one task: quotes or follow-up emails.','ai']]]},
+{id:'hrs',t:'Hours a week someone re-types the same info into a second place?',o:[['0–1',3],['2–5',2,['low','2–5 hours a week re-typing data','Connect the two systems that cause it.','sync']],['6–10',1,['med','6–10 hours a week re-typing data','Connect your systems so data is entered once.','sync']],['10+',0,['high','10+ hours a week re-typing data','That\'s a part-time job. Connect your systems.','sync']]]}
+];
+let A=load('bhc_answers',{}),SYS=load('bhc_sys',{apps:[],procs:[],os:[],exts:{},ids:[],secs:[]}),DEV={};['secs','extn','start','vsx','aios'].forEach(k=>SYS[k]=SYS[k]||[]);
+function renderQs(){$('qs').innerHTML=QS.map((q,i)=>`<div class="q"><b>${i+1}. ${esc(q.t)}</b><div class="opts">${q.o.map((o,j)=>`<button class="${A[q.id]===j?'on':''}" onclick="ans('${q.id}',${j})">${esc(o[0])}</button>`).join('')}</div></div>`).join('')}
+function ans(id,j){A[id]=j;store('bhc_answers',A);renderQs()}
+
+/* ---------- Device check (browser-visible only) ---------- */
+async function devCheck(){const u=navigator.userAgent;let os='Unknown',osEra='C',br='Unknown',brOld=false;
+ if(/Windows NT 5/.test(u)){os='Windows XP';osEra='L'}else if(/Windows NT 6\.0/.test(u)){os='Windows Vista';osEra='L'}else if(/Windows NT 6\.1/.test(u)){os='Windows 7';osEra='L'}else if(/Windows NT 6\.[23]/.test(u)){os='Windows 8';osEra='L'}
+ else if(/Windows NT 10/.test(u)){os='Windows 10 or 11';osEra='A';try{const h=await navigator.userAgentData.getHighEntropyValues(['platformVersion']);const M=parseInt(h.platformVersion);if(M>=13){os='Windows 11';osEra='C'}else if(M>0){os='Windows 10';osEra='A'}}catch(e){}}
+ else if(/iPhone|iPad/.test(u)){os=/iPad/.test(u)?'iPad':'iPhone';osEra='C';const mi=/OS (\d+)[_.]/.exec(u);if(mi){const M=+mi[1];if(M<18)os+=' (iOS '+M+')';osEra=M>=18?'C':M>=16?'A':'L'}}else if(/Android/.test(u)){os='Android';osEra='C';try{const ha=await navigator.userAgentData.getHighEntropyValues(['platformVersion']);const M=parseInt(ha.platformVersion);if(M>0){os='Android '+M;osEra=M>=14?'C':M>=12?'A':'L'}}catch(e){}}else if(/CrOS/.test(u)){os='Chromebook';osEra='C'}
+ else if(/Mac OS X/.test(u)){os='Mac';try{const h=await navigator.userAgentData.getHighEntropyValues(['platformVersion']);if(h.platformVersion){const M=parseInt(h.platformVersion);os='macOS '+h.platformVersion.split('.').slice(0,2).join('.');osEra=M===10?'L':M<=13?'A':'C'}}catch(e){}}
+ let plat='';try{plat=(navigator.userAgentData&&navigator.userAgentData.platform)||''}catch(e){}
+ if(os==='Unknown'){if(/Android/i.test(plat)){os='Android (DeX / desktop mode)';osEra='C'}else if(/Linux|X11/.test(u)){os='Linux';osEra='C'}}
+ let m;if((m=/Edg\/(\d+)/.exec(u))){br='Edge '+m[1];brOld=+m[1]<132}else if((m=/Firefox\/(\d+)/.exec(u))){br='Firefox '+m[1];brOld=+m[1]<134}else if((m=/Chrome\/(\d+)/.exec(u))){br='Chrome '+m[1];brOld=+m[1]<132}else if((m=/Version\/(\d+).*Safari/.exec(u))){br='Safari '+m[1];brOld=+m[1]<18}
+ const ram=navigator.deviceMemory||null,cores=navigator.hardwareConcurrency||null,c=navigator.connection||null;
+ DEV={os,osEra,br,brOld,ram,cores,net:c?(c.effectiveType||'')+(c.downlink?' · ~'+c.downlink+' Mbps':''):null,slow:c?(/2g|3g/.test(c.effectiveType||'')||(c.downlink&&c.downlink<5)):false,mobile:/iPhone|iPad|Android/.test(u)||/Android/i.test(plat)||os==='Linux'};
+ const cell=(k,v,flag)=>`<div><span class="note">${k}</span><b style="${flag?'color:var(--bad)':''}">${esc(v)}</b></div>`;
+ $('dev').innerHTML=cell('System',os,osEra==='L')+cell('Browser',br,brOld)+(ram?cell('Memory',(ram>=8?'8 GB or more':ram+' GB'),ram<4):'')+(cores?cell('Processor cores',cores,cores<=2):'')+(DEV.net?cell('Connection',DEV.net,DEV.slow):'')+(DEV.mobile?'':'');
+ pickDeep()}
+
+/* ---------- Optional deep scan ---------- */
+function colText(c){return $('c-'+c).textContent.replace(/^\n/,'')}
+function pickDeep(){const mac=/Macintosh|Mac OS X/.test(navigator.userAgent)&&!DEV.mobile,win=/Windows/.test(navigator.userAgent);
+ if(DEV.mobile||(!mac&&!win)){$('deepBtns').innerHTML='<span class="note">The deeper check runs on a Windows PC or Mac. Open this page on the computer your business runs on — or skip it; your answers alone give a solid score.</span>';$('deepSteps').innerHTML='';return}
+ if(win){$('deepBtns').innerHTML='<button class="btn p s" id="dWin">Download the check (Windows)</button>';$('deepSteps').innerHTML='<li>Open the downloaded <b>bridgehead-check.cmd</b>. If Windows warns, click <b>More info → Run anyway</b>.</li><li>Wait for green "done" (1–15 min).</li><li>Drop the file from the <b>Bridgehead</b> folder on your Desktop below.</li>';
+  $('dWin').onclick=()=>{if(!$('consent').checked){alert('Please tick the box above first.');return}const t='@echo off\r\necho Bridgehead Checkup - read-only, counts only...\r\npowershell -NoProfile -ExecutionPolicy Bypass -Command "$t = [IO.File]::ReadAllText(\'%~f0\'); $i = $t.IndexOf(\'#PS\' + \'START\'); iex $t.Substring($i + 8)"\r\npause\r\nexit /b\r\n#PSSTART\r\n'+colText('win').replace(/\r?\n/g,'\r\n');dl('bridgehead-check.cmd',t)}}
+ else{$('deepBtns').innerHTML='<button class="btn p s" id="dMac">Copy the check (Mac)</button>';$('deepSteps').innerHTML='<li>Open <b>Terminal</b> (Command+Space, type Terminal).</li><li>Paste (Command+V), press Return. Click <b>Allow</b> if your Mac asks.</li><li>Wait for "done", then drop the file from the <b>Bridgehead</b> folder on your Desktop below.</li>';
+  $('dMac').onclick=()=>{if(!$('consent').checked){alert('Please tick the box above first.');return}const t=colText('mac');const ok=()=>{$('dMac').textContent='Copied ✓'};try{navigator.clipboard.writeText(t).then(ok,()=>fbCopy(t,ok))}catch(e){fbCopy(t,ok)}}}}
+function fbCopy(t,ok){const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy');ok&&ok()}catch(e){}a.remove()}
+function dl(name,text){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:'application/octet-stream'}));a.download=name;document.body.appendChild(a);a.click();a.remove()}
+$('drop').onclick=()=>$('fileIn').click();
+['dragenter','dragover'].forEach(ev=>$('drop').addEventListener(ev,e=>{e.preventDefault()}));
+$('drop').addEventListener('drop',e=>{e.preventDefault();readInv(e.dataTransfer.files)});
+$('fileIn').onchange=()=>{readInv($('fileIn').files);$('fileIn').value=''};
+async function readInv(list){let n=0;for(const f of list){if(!/bridgehead-inventory.*\.txt$/i.test(f.name))continue;const t=await f.text();n++;const sec={};
+  t.split(/\r?\n/).forEach(l=>{const p=l.replace(/^﻿/,'').split('|');if(p[0]!=='BHv1')return;
+   if(p[1]==='APP'&&p[2])pushU(SYS.apps,(p[2]+' '+(p[3]||'')).trim());else if(p[1]==='PROC'&&p[2])pushU(SYS.procs,p[2]);else if(p[1]==='OS'&&p[2])pushU(SYS.os,p[2]);
+   else if(p[1]==='EXTN'&&p[3])pushU(SYS.extn,p[2]+'|'+p[3]);else if(p[1]==='START'&&p[2])pushU(SYS.start,p[2]);else if(p[1]==='VSX'&&p[2])pushU(SYS.vsx,p[2]);else if(p[1]==='AIOS'&&p[2])SYS.aios.push({t:p[2],n:p[3],s:p[3],d:(p[4]||'').trim()});
+   else if(p[1]==='SEC'&&p[2])sec[p[2]]={s:p[3]||'unknown',d:(p[4]||'').trim()};
+   else if(p[1]==='EXT'&&p[2])SYS.exts[p[2]]={n:+p[3]||0}});SYS.secs.push(sec)}
+ SYS.ids=detect().map(d=>d.id);store('bhc_sys',SYS);
+ $('deepMsg').innerHTML=n?`✓ Read ${n} file(s): <b>${SYS.ids.length}</b> business systems recognized. They'll show in your results, with a security check.`:'That doesn\'t look like a Bridgehead file — look in the Bridgehead folder on your Desktop.'}
+function detect(){const hay=SYS.apps.concat(SYS.procs).map(s=>s.toLowerCase());const out=[];
+ LIB.forEach(L=>{const hit=hay.filter(h=>L.k.some(k=>k[0]==='='?(h===k.slice(1)||h.startsWith(k.slice(1)+' ')):h.includes(k)));let ok=hit.length>0;L.x.forEach(x=>{if(SYS.exts[x])ok=true});
+  if(ok){let e=L.e;if(e==='C'&&hit.some(h=>/\b(19\d\d|200\d|201[0-3])\b/.test(h)))e='A';out.push(Object.assign({},L,{e,n:e!==L.e?L.n.replace(' (current)',''):L.n}))}});return out}
+
+
+/* ---------- Security check definitions (plain-English, safe fixes only) ---------- */
+const SECDEF={
+av:['Antivirus','Open Windows Security → Virus & threat protection; make sure it is on and updated. If you pay for another antivirus, open it and run its update.'],
+firewall:['Firewall','Windows: Windows Security → Firewall & network protection → turn it on for each network. Mac: System Settings → Network → Firewall. (Skip if your IT person manages a different firewall.)'],
+updates:['System updates','Windows: Settings → Windows Update → Check for updates. Mac: System Settings → General → Software Update. Restart when it asks.'],
+uptime:['Restarts','Restart once a week — many updates only finish after a restart.'],
+rdp:['Remote Desktop','If nobody connects to this computer remotely, turn it off: Settings → System → Remote Desktop.'],
+remote:['Remote-control programs','Fine if your own IT person uses it. If a caller or a pop-up asked you to install it: close it, never read anyone a code, and call someone you trust before doing anything else.'],
+autologin:['Automatic sign-in','Turn on a password or PIN at sign-in so anyone who opens the computer can\'t walk right in.'],
+admin:['Administrator rights','Use a standard account day to day; keep the admin account for installing software. A 10-minute change for an IT person.'],
+guest:['Guest account','Turn off the guest account unless you truly need it.'],
+ports:['Open network doors','Ask your IT person whether these need to be open. If not, they should be closed.'],
+wifi:['Wi-Fi security','Set your router to WPA2 or WPA3 with a strong password. Your internet provider can help.'],
+shares:['Shared folders','Check that only the right people can open these folders.'],
+disk:['Free disk space','Empty the Recycle Bin / Trash and clear old downloads. Windows: Settings → System → Storage. Mac: System Settings → General → Storage.'],
+temp:['Temporary files','Use the built-in cleaner. Windows: Settings → System → Storage → Temporary files. Mac: restart, then System Settings → General → Storage.'],
+encrypt:['Disk encryption','Turn on BitLocker (Windows) or FileVault (Mac) so a lost laptop doesn\'t mean lost data. Have your IT person do it — the recovery key must be saved somewhere safe first.'],
+gatekeeper:['App protection (Gatekeeper)','Have an IT person turn it back on.'],
+sip:['System protection (SIP)','Have an IT person turn it back on.'],
+startup:['Startup programs','Turn off ones you don\'t need. Windows: Task Manager → Startup apps. Mac: System Settings → General → Login Items.'],
+ext:['Browser extensions','Remove any you don\'t recognize or don\'t use (browser menu → Extensions). Extensions can see what you browse.'],
+pwfiles:['Password documents','Move those passwords into a password manager, then delete the document and empty the trash.']};
+const SECRANK={risk:4,warn:3,info:2,unknown:1,ok:0};
+const SECLBL={risk:['FIX NOW','var(--bad)'],warn:['FIX','var(--warn)'],info:['REVIEW','var(--mute)'],unknown:['N/A','var(--mute)'],ok:['OK','var(--good)']};
+function secMerge(list){const M={};list.forEach(sec=>Object.entries(sec||{}).forEach(([k,v])=>{if(!SECDEF[k])return;const m=M[k]||(M[k]={s:'ok',d:[],n:0});m.n++;if(SECRANK[v.s]>SECRANK[m.s])m.s=v.s;if(v.d&&!m.d.includes(v.d.trim()))m.d.push(v.d.trim())}));return M}
+function secCard(M,title){const ks=Object.keys(M).sort((a,b)=>SECRANK[M[b].s]-SECRANK[M[a].s]);if(!ks.length)return'';const pass=ks.filter(k=>M[k].s==='ok').length;
+ return`<div class="card"><h3>${title}</h3><p class="note">${pass} of ${ks.length} checks look good. Read-only — Bridgehead never changes a setting; every fix below is yours to make, or hand to someone you trust.</p>`+ks.map(k=>{const m=M[k],l=SECLBL[m.s]||SECLBL.info;return`<div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)"><span style="flex:none;font-size:11px;font-weight:700;color:#fff;background:${l[1]};border-radius:4px;padding:2px 7px;height:fit-content;margin-top:2px">${l[0]}</span><div><b>${esc(SECDEF[k][0])}</b>${m.d.length?` <span class="note">— ${esc(m.d.slice(0,2).join(' · '))}${m.n>1?' ('+m.n+' computers)':''}</span>`:''}${m.s==='warn'||m.s==='risk'||(m.s==='info'&&['remote','shares','startup','ext'].includes(k))?`<br><span style="font-size:14px">${esc(SECDEF[k][1])}</span>`:''}</div></div>`}).join('')+`</div>`}
+
+
+/* ---------- AI tools: library, detection, card ---------- */
+const AICAT={
+chat:['AI chat assistant','Free or personal accounts may use what you type to improve their models, depending on settings. Never paste customer details, account numbers, or passwords.','Move the team to a business plan with data controls, and save shared prompts for quotes, follow-up emails, and SOPs so everyone gets the same quality.'],
+meeting:['AI meeting recorder','Records and transcribes calls, and some join meetings automatically. Some states require everyone on a call to agree to recording — check its auto-join setting.','Send summaries and action items straight into your CRM or task list instead of an inbox nobody reads.'],
+writing:['AI writing assistant','Reads what you type into it, including customer emails.','Set your brand voice once so every email and quote sounds like your business.'],
+browser:['AI browser extension','Can read pages you visit — including customer portals and banking. Keep only ones you chose and actually use.','One trusted assistant beats several overlapping extensions doing the same thing.'],
+coding:['AI coding assistant','Can send code and project files to the provider. Check its settings before using it on client work.','Use it to build the small internal tools your team keeps asking for.'],
+local:['AI running on this computer','Private by design, but large — often several GB — and easy to forget about.','A good fit for private documents that shouldn\'t go to the cloud, as long as someone owns it.'],
+os:['Built into the operating system','Windows Recall saves snapshots of the screen so you can search later — that can include customer details and passwords shown on screen. If you handle customer data, pause it or filter apps: Settings → Privacy & security → Recall & snapshots.','If you keep it, exclude your billing, banking, and customer apps from snapshots.'],
+creative:['AI creative tool','Uploads whatever you give it.','Great for marketing content — keep customer photos and documents out of it.']};
+const AILIB=[
+['GitHub Copilot','coding',/github\.?copilot/i],['ChatGPT','chat',/\bchatgpt\b|\bopenai\b/i],['Claude','chat',/\bclaude\b(?!-dev)|\banthropic\b/i],
+['Microsoft Copilot','chat',/\bcopilot\b/i,null,/github/i],['Google Gemini','chat',/\bgemini\b/i],['Perplexity','chat',/\bperplexity\b/i],['DeepSeek','chat',/\bdeepseek\b/i],['Grok','chat',/\bgrok\b/i],
+['Otter.ai','meeting',/\botter\b/i],['Fireflies','meeting',/\bfireflies\b/i],['Fathom','meeting',/\bfathom\b/i],['Read.ai','meeting',/\bread\.?ai\b/i],['tl;dv','meeting',/\btl;?dv\b/i],['Krisp','meeting',/\bkrisp\b/i],['Granola','meeting',/\bgranola\b/i],
+['Grammarly','writing',/\bgrammarly\b/i],['Jasper','writing',/\bjasper\b/i],['QuillBot','writing',/\bquillbot\b/i],['Wordtune','writing',/\bwordtune\b/i],['Notion (built-in AI)','writing',/^notion\b/i],
+['Monica','browser',/\bmonica\b/i,['extn']],['Merlin','browser',/\bmerlin\b/i,['extn']],['MaxAI','browser',/\bmaxai\b/i],['HARPA AI','browser',/\bharpa\b/i],['Sider','browser',/\bsider\b/i,['extn']],
+['Cursor','coding',/^cursor\b/i,['apps','procs']],['Codeium / Windsurf','coding',/\bcodeium\b|\bwindsurf\b/i],['Tabnine','coding',/\btabnine\b/i],['Cline','coding',/claude-dev|\bcline\b/i],
+['Ollama','local',/\bollama\b/i],['LM Studio','local',/lm ?studio/i],['GPT4All','local',/gpt4all/i],
+['Midjourney','creative',/midjourney/i],['ElevenLabs','creative',/elevenlabs/i],['Descript','creative',/\bdescript\b/i]];
+const AIWHERE={apps:'installed',procs:'running now',extn:'browser extension',start:'starts automatically',vsx:'coding add-on'};
+function aiDetect(D){const out={};const add=(n,cat,w,det)=>{const o=out[n]||(out[n]={n,cat,where:[],det:[]});if(w&&!o.where.includes(w))o.where.push(w);if(det&&!o.det.includes(det))o.det.push(det)};
+ ['apps','procs','extn','start','vsx'].forEach(src=>(D[src]||[]).forEach(raw=>{const s=src==='extn'?String(raw).split('|').slice(1).join('|'):String(raw);let hit=false;
+  AILIB.forEach(([n,cat,rx,only,not])=>{if(only&&!only.includes(src))return;if(rx.test(s)&&!(not&&not.test(s))){add(n,cat,AIWHERE[src]);hit=true}});
+  if(!hit&&src==='extn'&&/\b(ai|gpt|chatbot|copilot)\b/i.test(s))add(s.length>40?s.slice(0,40)+'…':s,'browser','browser extension')}));
+ (D.aios||[]).forEach(a=>{if(a.t==='local')add(a.n,'local','models on disk',a.d);else if(a.t==='recall'&&a.s==='on')add('Windows Recall','os','turned on',a.d)});
+ return Object.values(out)}
+function aiOverlap(L){const c={};L.forEach(t=>{if(t.cat==='chat'||t.cat==='meeting'||t.cat==='writing'||t.cat==='browser')c[t.cat]=(c[t.cat]||0)+1});return Object.entries(c).filter(([k,v])=>v>=2)}
+function aiCard(L,gate){if(!L.length)return'';const ov=aiOverlap(L);const order=['os','meeting','browser','local','chat','writing','coding','creative'];L=L.slice().sort((a,b)=>order.indexOf(a.cat)-order.indexOf(b.cat));
+ return`<div class="card"><h3>AI tools on this computer</h3><p class="note">${L.length} found. What each one can see, and how to get more from it. Not sure who installed one? Remove it: Windows Settings → Apps, or drag it out of the Mac Applications folder (browser add-ons: browser menu → Extensions).</p>`+
+ (ov.length?`<p style="font-size:14px"><b>Overlap:</b> ${ov.map(([k,v])=>v+' '+AICAT[k][0]+'s').join(', ')} doing the same job — pick one and cancel the rest.</p>`:'')+
+ L.map((t,i)=>{const c=AICAT[t.cat];const quiet=t.where.some(w=>/automatically|running|extension|turned on/.test(w))&&['meeting','browser','local','os'].includes(t.cat);
+  return`<div style="padding:9px 0;border-bottom:1px solid var(--line)"><b>${esc(t.n)}</b> <span class="note">${esc(c[0])} · ${esc(t.where.concat(t.det).join(' · '))}</span>${quiet?' <span style="font-size:11px;font-weight:700;color:#fff;background:var(--warn);border-radius:4px;padding:1px 6px">WORKS IN THE BACKGROUND</span>':''}
+  <div style="font-size:14px;margin-top:3px"><b>What it can see:</b> ${esc(c[1])}</div><div style="font-size:14px"><b>Get more from it:</b> ${gate&&i>0?'<span class="lock">🔒 In your full report</span>':esc(c[2])}</div></div>`}).join('')+`</div>`}
+
+/* ---------- Results ---------- */
+const scored=()=>QS.filter(q=>!q.noscore);
+function results(){const vals=[],F=[];
+ scored().forEach(q=>{const a=A[q.id];if(a==null)return;vals.push(q.o[a][1]/3*100);const f=q.o[a][2];if(f)F.push({sev:f[0],t:f[1],fix:f[2],up:f[3]})});
+ const eraV={L:15,A:55,C:90};vals.push(eraV[DEV.osEra]||70);
+ if(DEV.osEra==='L')F.push({sev:'high',t:(DEV.mobile?'This phone runs ':'This computer runs ')+DEV.os+' — no security updates',fix:'Replace it or take it off the internet.',up:'hw'});
+ if(DEV.brOld)F.push({sev:'med',t:'Web browser is out of date ('+DEV.br+')',fix:'Update it — takes two minutes.',up:'hw'});
+ if(DEV.ram&&DEV.ram<4)F.push({sev:'med',t:'This computer has under 4 GB of memory',fix:'Expect slowdowns with modern apps.',up:'hw'});
+ if(DEV.slow)F.push({sev:'med',t:'Slow internet connection right now',fix:'Cloud tools need a solid line — check your plan.',up:'stack'});
+ PS_add(vals,F);const sys=detect();sys.forEach(s=>{vals.push(eraV[s.e]);if(s.e==='L')F.push({sev:'high',t:'Legacy software found: '+s.n,fix:'Get the data out while it still opens.',up:'books'});else if(s.e==='A')F.push({sev:'low',t:'Aging software: '+s.n,fix:'Plan its replacement on your schedule, not its.',up:'books'})});
+ const SM=secMerge(SYS.secs);let secBad=0;Object.values(SM).forEach(m=>{if(m.s==='ok')vals.push(100);else if(m.s==='warn'){vals.push(50);secBad++}else if(m.s==='risk'){vals.push(10);secBad++}});
+ const AIL=aiDetect(SYS);const ov=aiOverlap(AIL);
+ AIL.forEach(t=>{if(t.cat==='os')F.push({sev:'med',t:'Windows Recall is saving screen snapshots',fix:'Pause it or exclude customer and banking apps.',up:'ai'});else if(t.cat==='browser')F.push({sev:'med',t:'AI browser extension can read your web pages: '+t.n,fix:'Keep it only if you chose it and use it.',up:'ai'});else if(t.cat==='meeting')F.push({sev:'low',t:'AI meeting recorder installed: '+t.n,fix:'Check its auto-join setting and tell callers they are recorded.',up:'ai'})});
+ ov.forEach(([k,v])=>F.push({sev:'med',t:v+' '+AICAT[k][0]+'s doing the same job',fix:'Pick one and cancel the rest.',up:'ai'}));
+ const score=Math.round(vals.reduce((a,b)=>a+b,0)/vals.length);
+ const order={high:0,med:1,low:2};F.sort((a,b)=>order[a.sev]-order[b.sev]);
+ // savings estimate (annual, rough, labeled)
+ let lo=0,hi=0;const h=[0.5,3.5,8,12][A.hrs==null?0:A.hrs];lo+=h*0.5*30*48;hi+=h*0.8*30*48;
+ const appsX=[[0,0],[300,900],[1200,3000],[2500,6000]][A.apps==null?0:A.apps];lo+=appsX[0];hi+=appsX[1];
+ sys.forEach(s=>{if(s.e==='L'){lo+=800;hi+=2500}else if(s.e==='A'){lo+=150;hi+=600}});
+ if(A.acct===2){lo+=500;hi+=2000}if(A.q2>=2){lo+=500;hi+=3000}
+ ov.forEach(([k,v])=>{lo+=(v-1)*120;hi+=(v-1)*360});
+ const r=x=>Math.round(x/500)*500;
+ return{score,F,sys,lo:r(lo),hi:r(Math.max(hi,lo+500)),hlo:Math.round(h*0.5*10)/10,hhi:Math.round(h*0.8*10)/10,ups:[...new Set(F.map(f=>f.up).concat(secBad?['sec']:[]))].map(k=>UP[k]),SM,secBad,AIL}}
+function grade(s){return s>=80?['Strong','var(--good)']:s>=60?['Room to grow','var(--warn)']:s>=40?['Needs attention','var(--warn)']:['At risk','var(--bad)']}
+function renderRes(){const R=results();const g=grade(R.score);let h='';
+ h+=`<div class="card"><div class="gauge"><div class="ring" style="background:conic-gradient(${g[1]} ${R.score*3.6}deg,var(--line) 0)"><span>${R.score}</span></div><div><h2 style="margin:0">${g[0]}</h2><p style="margin:4px 0"><b>${R.F.length+R.secBad}</b> issue${R.F.length+R.secBad===1?'':'s'} found${R.secBad?` (${R.secBad} security)`:''} · <b>${R.ups.length}</b> upgrade${R.ups.length===1?'':'s'} that fit</p><p class="note" style="margin:0">Score out of 100 across tools, data, billing, backup, and security.</p></div></div></div>`;
+ if(R.hi>0)h+=`<div class="save"><span class="note" style="color:#cfe3e0">What fixing this could be worth</span><div class="big2">$${R.lo.toLocaleString()} – $${R.hi.toLocaleString()} a year</div>${R.hhi>0?`<div>plus <b>${R.hlo}–${R.hhi} hours a week</b> back</div>`:''}<p class="note" style="color:#cfe3e0;margin:6px 0 0">Rough estimate from your answers, using typical small-business costs. Your full report gives your real number.</p></div><div style="height:12px"></div>`;
+ h+=`<div class="card"><h2>What we found</h2>`+(R.F.length?R.F.map((f,i)=>`<div class="iss"><span class="sev ${f.sev}">${f.sev==='med'?'MEDIUM':f.sev.toUpperCase()}</span><div><b>${esc(f.t)}</b><br>${i<3?`<span>Quick win: ${esc(f.fix)}</span>`:'<span class="lock">🔒 Fix steps in your full report</span>'}</div></div>`).join(''):'<p>Nothing major. You\'re ahead of most businesses your size — the full report shows where to go next.</p>')+`</div>`;
+ h+=secCard(R.SM,'Security check — common weak spots');
+ h+=aiCard(R.AIL,true);h+=psCard();
+ if(R.ups.length)h+=`<div class="card"><h2>Upgrades that fit</h2>${R.ups.slice(0,2).map(u=>`<div class="iss"><span class="sev low">FIT</span><div><b>${esc(u)}</b><br><span class="lock">🔒 Which option, what it costs, what it saves — in your full report</span></div></div>`).join('')}${R.ups.length>2?`<p class="lock">+ ${R.ups.length-2} more in your full report</p>`:''}</div>`;
+ $('res').innerHTML=h;window._R=R}
+
+/* BHC-PS-BEGIN: phone and website test */
+let PS=load('bhc_ps',{ph:{},url:'',site:null});PS.ph=PS.ph||{};
+const PQ=[
+ {id:'lock',s:'screen lock',t:'Does your phone lock with a passcode, fingerprint, or face?',f:['high','Phone has no screen lock','Turn on a passcode plus fingerprint or face unlock in Settings.','sec']},
+ {id:'upd',s:'automatic updates',t:'Do your phone\'s system updates install automatically?',f:['med','Phone updates are not automatic','Turn on automatic updates in Settings so security fixes arrive on their own.','sec']},
+ {id:'mfa',s:'2-step sign-in on business email and banking',t:'Is 2-step sign-in turned on for your business email and banking?',f:['high','2-step sign-in is off on business email or banking','Turn on 2-step sign-in. It stops most account takeovers.','pw']},
+ {id:'find',s:'find-and-erase for a lost phone',t:'If the phone is lost, could you find it or erase it remotely?',f:['med','A lost phone could not be located or erased','Turn on Find My (iPhone) or Find Hub (Android) and test it once.','sec']}
+];
+const PYN=['Yes','No','Not sure'];
+function psAns(id,j){PS.ph[id]=j;store('bhc_ps',PS);psPhoneQs();psQuick()}
+function psPhoneQs(){$('psPhoneQs').innerHTML=PQ.map((q,i)=>`<div class="q"><b>${esc(q.t)}</b><div class="opts" style="grid-template-columns:repeat(3,1fr)">${PYN.map((o,j)=>`<button type="button" class="${PS.ph[q.id]===j?'on':''}" onclick="psAns('${q.id}',${j})">${o}</button>`).join('')}</div></div>`).join('')}
+function psHost(raw){let s=(raw||'').trim().toLowerCase().replace(/^[a-z]+:\/\//,'').replace(/^\/+/,'');s=s.split(/[\/?#]/)[0].split(':')[0];
+ if(!/^[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)+$/.test(s))return null;return s.replace(/^www\./,'')}
+function psPing(host){const c=new AbortController(),t=setTimeout(()=>c.abort(),8000),t0=performance.now();
+ return fetch('https://'+host+'/',{mode:'no-cors',cache:'no-store',redirect:'follow',signal:c.signal}).then(()=>({ok:true,ms:Math.round(performance.now()-t0)}),()=>({ok:false,ms:Math.round(performance.now()-t0)})).then(r=>{clearTimeout(t);return r})}
+async function psRunSite(){
+ const out=$('psSiteRes');
+ if(!$('psConsent').checked){out.innerHTML='<p class="note">Please tick the box first.</p>';return}
+ if(navigator.onLine===false){out.innerHTML='<p class="note">You appear to be offline. Connect to the internet and try again.</p>';return}
+ const host=psHost($('psUrl').value);
+ if(!host){out.innerHTML='<p class="note">Enter your address like yourcompany.com</p>';return}
+ const lab=host.split('.'),wt=lab.length===2||(lab.length===3&&/^(co|com|org|net|gov|edu)$/.test(lab[1])&&lab[2].length===2);
+ $('psRun').disabled=true;out.innerHTML='<p class="note">Testing '+esc(host)+'…</p>';
+ try{
+  const [a,w]=await Promise.all([psPing(host),wt?psPing('www.'+host):Promise.resolve(null)]);
+  let ms=a.ms;if(a.ok){const b=await psPing(host);if(b.ok)ms=b.ms}
+  PS.url=host;PS.site={host,a:a.ok,w:w?w.ok:null,ms:a.ok?ms:null,at:Date.now()};store('bhc_ps',PS);
+ }catch(e){out.innerHTML='<p class="note">The test could not run here. Try again on another connection.</p>';$('psRun').disabled=false;return}
+ $('psRun').disabled=false;psSiteRes();psQuick()}
+function psSiteRes(){const s=PS.site,out=$('psSiteRes');if(!s){out.innerHTML='';return}
+ const cell=(k,v,flag)=>`<div><span class="note">${k}</span><b style="${flag?'color:var(--bad)':''}">${esc(v)}</b></div>`;
+ out.innerHTML=`<p class="note" style="margin:10px 0 6px">Result for <b>${esc(s.host)}</b>. Measured from this device on this connection.</p><div class="dev">`+
+  cell('Secure address (https)',s.a?'Loads':'Did not load',!s.a)+
+  (s.w===null?'':cell('www version',s.w?'Loads':'Did not load',!s.w))+
+  (s.ms!=null?cell('Response time',(s.ms/1000).toFixed(1)+' sec',s.ms>2500):'')+'</div>'+
+  (!s.a&&s.w===false?'<p class="note">Neither version loaded securely. The address may be mistyped, the site may be down, or it may be missing its security certificate (the padlock).</p>':'')}
+function PS_add(vals,F){
+ PQ.forEach(q=>{const a=PS.ph[q.id];if(a==null)return;vals.push([100,10,40][a]);
+  if(a===1)F.push({sev:q.f[0],t:q.f[1],fix:q.f[2],up:q.f[3]});
+  else if(a===2)F.push({sev:'low',t:'Check on your phone: '+q.s,fix:q.f[2],up:q.f[3]})});
+ const s=PS.site;if(!s)return;
+ if(!s.a&&(s.w===false||s.w===null)){vals.push(10);F.push({sev:'high',t:'Website did not load securely from this device ('+s.host+')',fix:'Check the address. If it is right, your site may be down or missing its security certificate (the padlock).',up:'web'})}
+ else if(!s.a&&s.w){vals.push(50);F.push({sev:'low',t:'Only the "www" version of your website opens ('+s.host+')',fix:'Anyone typing the address without "www" gets an error. Make both versions open the same site.',up:'web'})}
+ else if(s.a&&s.w===false){vals.push(50);F.push({sev:'low',t:'The "www" version of your website does not open ('+s.host+')',fix:'Anyone typing "www" in front of the address gets an error. Make both versions open the same site.',up:'web'})}
+ else{vals.push(100)}
+ if(s.a&&s.ms!=null&&s.ms>2500){F.push({sev:s.ms>4000?'med':'low',t:'Website was slow to answer (about '+(s.ms/1000).toFixed(1)+' sec from here)',fix:'Ask your web host or builder about speed. Large images and old hosting are the usual causes.',up:'web'})}}
+function psCard(){const rows=PQ.filter(q=>PS.ph[q.id]!=null),s=PS.site;if(!rows.length&&!s)return'';
+ let h='<div class="card"><h2>Phone and website check</h2>';
+ rows.forEach(q=>{const a=PS.ph[q.id];h+=`<div class="iss"><span class="sev ${a===0?'low':a===1?'high':'med'}">${a===0?'OK':a===1?'FIX':'CHECK'}</span><div><b>${esc(q.s.charAt(0).toUpperCase()+q.s.slice(1))}</b><br><span class="note">${PYN[a]}</span></div></div>`});
+ if(s){const bad=!s.a||s.w===false;h+=`<div class="iss"><span class="sev ${bad?'high':'low'}">${bad?'FIX':'OK'}</span><div><b>Website ${esc(s.host)}</b><br><span class="note">Secure address ${s.a?'loads':'did not load'}${s.w===null?'':'; www version '+(s.w?'loads':'did not load')}${s.ms!=null?'; about '+(s.ms/1000).toFixed(1)+' sec to respond':''}</span></div></div>`}
+ return h+'</div>'}
+function psQuick(){const lk=$('psLink');if(lk)lk.classList.toggle('hide',PQ.some(q=>PS.ph[q.id]!=null)||!!PS.site);const el=$('psQuick');if(!el)return;
+ const vals=[],F=[];PS_add(vals,F);
+ const nIn=PQ.filter(q=>PS.ph[q.id]!=null).length+(PS.site?1:0);
+ if(!nIn){el.innerHTML='';return}
+ const order={high:0,med:1,low:2};F.sort((a,b)=>order[a.sev]-order[b.sev]);
+ let h='<div style="height:12px"></div>';
+ if(nIn>=3){const sc=Math.round(vals.reduce((a,b)=>a+b,0)/vals.length),g=grade(sc);
+  h+=`<div class="gauge"><div class="ring" style="width:84px;height:84px;font-size:28px;background:conic-gradient(${g[1]} ${sc*3.6}deg,var(--line) 0)"><span style="width:64px;height:64px">${sc}</span></div><div><h3 style="margin:0">${g[0]}</h3><p class="note" style="margin:2px 0 0">Your phone and website, out of 100. ${F.length} thing${F.length===1?'':'s'} to look at.</p></div></div>`}
+ else h+='<p class="note">Answer the rest of the phone questions, or test your website, to get a score.</p>';
+ h+=F.length?F.slice(0,3).map(f=>`<div class="iss"><span class="sev ${f.sev}">${f.sev==='med'?'MEDIUM':f.sev.toUpperCase()}</span><div><b>${esc(f.t)}</b><br><span>Quick win: ${esc(f.fix)}</span></div></div>`).join('')+(F.length>3?`<p class="lock">🔒 ${F.length-3} more, with step-by-step fixes, in your full report</p>`:''):'<p>Nothing to fix here. You are ahead of most businesses. The full checkup looks at billing, backups, and software next.</p>';
+ h+='<button class="btn p big" type="button" style="margin-top:12px" onclick="go(1)">Continue: see what else the full checkup finds →</button><p class="note" style="margin:6px 0 0;text-align:center">Your answers carry over.</p>';
+ el.innerHTML=h}
+function PS_lines(){const L=[],ph=PQ.filter(q=>PS.ph[q.id]!=null).map(q=>q.s+': '+PYN[PS.ph[q.id]].toLowerCase());
+ if(ph.length)L.push('Phone — '+ph.join('; '));
+ const s=PS.site;if(s)L.push('Website '+s.host+' — secure address '+(s.a?'loads':'did not load')+(s.w===null?'':'; www '+(s.w?'loads':'did not load'))+(s.ms!=null?'; about '+(s.ms/1000).toFixed(1)+' sec':''));
+ if(L.length)L.push('');return L}
+function PS_code(){const s=PS.site;return{p:PS.ph,w:s?{a:+s.a,w:s.w===null?null:+s.w,ms:s.ms}:null}}
+function psInit(){
+ if(/iPhone|iPad|Android/.test(navigator.userAgent)){$('devH').textContent='Your phone, at a glance';$('psPhoneAuto').textContent='This device: '+DEV.os+(DEV.brOld?'. Its browser is out of date.':'.')+' The answers below cover the things a browser cannot see.'}
+ else{$('psPhoneAuto').textContent='You are on a computer. For the automatic checks (system version, browser), open this page on your phone too. You can answer the four questions below from here.'}
+ psPhoneQs();if(PS.url)$('psUrl').value=PS.url;psSiteRes();psQuick();$('psRun').onclick=psRunSite;cfgBoot().then(reqInit);$('psLink').classList.toggle('hide',PQ.some(q=>PS.ph[q.id]!=null)||!!PS.site)}
+/* BHC-PS-END */
+/* BHC-REQ-BEGIN: send a request to the Drive collector. Modes: minimal (default), full, consult. */
+let REQ_ID=null,SENDING=false,REQ_OPEN=null;
+function cap(a,n){return (a||[]).slice(0,n||400).map(x=>String(x).slice(0,120))}
+function noticeOk(){return !NOTICE_REQUIRED||!!PRIVACY_URL}
+function reqOpen(){if(!SCAN_ENDPOINT)return false;if(REQ_OPEN!==null)return REQ_OPEN;return noticeOk()}
+function cfgClean(c){if(!c||typeof c!=='object')return null;
+ const u=x=>(typeof x==='string'&&x.length<=300&&/^https:\/\/[^\s<>"']+$/.test(x))?x:'';
+ return{open:c.open===true,level:['consult','minimal','full'].indexOf(c.level)>-1?c.level:null,privacyUrl:u(c.privacyUrl),termsUrl:u(c.termsUrl),
+  version:typeof c.version==='string'?c.version.slice(0,40):'',consentText:typeof c.consentText==='string'?c.consentText.slice(0,500):''}}
+function cfgApply(o){if(o.level)REQUEST_MODE=o.level;PRIVACY_URL=o.privacyUrl;TERMS_URL=o.termsUrl;if(o.version)NOTICE_VERSION=o.version;if(o.consentText)CONSENT_TEXT=o.consentText;REQ_OPEN=!!(o.open&&o.privacyUrl)}
+function cfgBoot(){return new Promise(res=>{let finished=false;const c=new AbortController();
+ const finish=()=>{if(finished)return;finished=true;clearTimeout(t);document.body.classList.remove('cfg-wait');res()};
+ const t=setTimeout(()=>{try{c.abort()}catch(e){}finish()},3500);
+ if(!SCAN_ENDPOINT){finish();return}
+ fetch(SCAN_ENDPOINT+(SCAN_ENDPOINT.indexOf('?')>-1?'&':'?')+'config=1',{signal:c.signal,redirect:'follow'})
+  .then(r=>{if(!r.ok)throw new Error('http');return r.json()})
+  .then(j=>{if(finished)return;const o=cfgClean(j&&j.config);if(o)cfgApply(o)})
+  .catch(()=>{}).then(finish)})}
+function legalLinks(){const a=[];if(PRIVACY_URL)a.push('<a href="'+esc(PRIVACY_URL)+'" target="_blank" rel="noopener">Privacy notice</a>');if(TERMS_URL)a.push('<a href="'+esc(TERMS_URL)+'" target="_blank" rel="noopener">Terms</a>');const e=$('legalLinks');if(e)e.innerHTML=a.join(' &middot; ')}
+function consentHtml(){const p=PRIVACY_URL?'<a href="'+esc(PRIVACY_URL)+'" target="_blank" rel="noopener">privacy notice</a>':'privacy notice',t=TERMS_URL?'<a href="'+esc(TERMS_URL)+'" target="_blank" rel="noopener">terms</a>':'terms';return esc(CONSENT_TEXT).replace('privacy notice',p).replace('terms',t)}
+function consentRec(){return{accepted:true,text:CONSENT_TEXT,version:NOTICE_VERSION,at:new Date().toISOString()}}
+function reqId(){return REQ_ID||(REQ_ID='r'+Date.now().toString(36)+Math.random().toString(36).slice(2,10))}
+function fullPart(n){const R=window._R||results(),g=grade(R.score),s=PS.site;
+ return{answers:QS.map(q=>({id:q.id,question:q.t,answer:A[q.id]==null?'':q.o[A[q.id]][0]})),
+  phoneChecks:PQ.map(q=>({id:q.id,question:q.t,answer:PS.ph[q.id]==null?'':PYN[PS.ph[q.id]]})),
+  website:s?{host:s.host,httpsLoads:!!s.a,wwwLoads:s.w==null?null:!!s.w,responseMs:s.ms==null?null:s.ms,testedAt:s.at?new Date(s.at).toISOString():null}:null,
+  device:{os:DEV.os||'',browser:DEV.br||'',browserOld:!!DEV.brOld,memoryGB:DEV.ram||null,cores:DEV.cores||null,network:DEV.net||'',mobile:!!DEV.mobile},
+  systems:{detected:(R.sys||[]).map(x=>({name:x.n,era:x.e})),operatingSystems:SYS.os||[]},
+  results:{score:R.score,grade:g[0],issueCount:R.F.length+R.secBad,estimateLow:R.lo,estimateHigh:R.hi,upgrades:R.ups||[],aiTools:(R.AIL||[]).map(t=>t.n),
+   securityItems:Object.entries(R.SM||{}).map(([k,m])=>({name:SECDEF[k]?SECDEF[k][0]:k,status:m.s,detail:(m.d||[]).join('; ')})),
+   issues:R.F.map(f=>({severity:f.sev,title:f.t,fix:f.fix}))},
+  scan:{installedApps:cap(SYS.apps,n),runningProcesses:cap(SYS.procs,n),startupItems:cap(SYS.start,n),fileTypes:SYS.exts||{},extensions:cap(SYS.extn,n),editorExtensions:cap(SYS.vsx,n),aiApps:cap(SYS.aios,n)},
+  code:code(R)}}
+function reqPayload(id,n){
+ const base={token:SCAN_TOKEN,requestId:id,sentAt:new Date().toISOString(),site:location.hostname,page:location.pathname,mode:REQUEST_MODE,consent:consentRec(),
+  contact:{name:$('g_name').value.trim(),business:$('g_biz').value.trim(),phone:$('g_phone').value.trim(),email:$('g_email').value.trim(),wants:$('g_want').value}};
+ return REQUEST_MODE==='full'?Object.assign(base,fullPart(n)):base}
+function reqBody(id){let n=400,b;do{b=JSON.stringify(reqPayload(id,n));n=Math.floor(n/2)}while(b.length>140000&&n>5);return b}
+function consultPayload(id){return{token:SCAN_TOKEN,requestId:id,sentAt:new Date().toISOString(),site:location.hostname,page:location.pathname,mode:'consult',consent:consentRec(),
+ contact:{name:$('c_name').value.trim(),business:$('c_biz').value.trim(),phone:$('c_phone').value.trim(),email:$('c_email').value.trim(),wants:$('c_topic').value,bestTime:$('c_time').value}}}
+function checkContact(b,p,e,consentId){
+ if(!b)return 'Add your business name so we know who it is for.';if(!p&&!e)return 'Add a phone number or an email so we can reach you.';
+ if(e&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e))return 'That email address does not look right.';
+ if(!$(consentId).checked)return 'Please tick the box to agree before sending.';return ''}
+function postReq(body){const c=new AbortController(),t=setTimeout(()=>c.abort(),30000);
+ return fetch(SCAN_ENDPOINT,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body,redirect:'follow',signal:c.signal})
+  .then(r=>{clearTimeout(t);if(!r.ok)throw new Error('http');return r.json()})
+  .then(j=>{if(!j||!j.ok)throw new Error(j&&j.error||'failed');return j.ref})
+  .catch(e=>{clearTimeout(t);throw e})}
+function failText(code){return code==='busy'?'Many requests are coming in at once. Please try again in a minute.':code==='bad email'?'That email address does not look right.':code==='consent missing'?'Please tick the box to agree before sending.':'We could not send your request just now.'}
+function okCard(ref,who,hideId,beforeId){const old=$('reqOk');if(old)old.remove();const c=document.createElement('div');c.className='card';c.id='reqOk';c.setAttribute('role','status');
+ c.innerHTML='<h2>Request received</h2><p>Thank you. Your request is in. Your reference is <b>'+esc(ref)+'</b>. We will be in touch at '+esc(who)+'.</p><p class="note">Nothing more is sent.</p><p class="note"><a href="#" onclick="startOver();return false">Start over</a></p>';
+ $(beforeId).parentNode.insertBefore(c,$(beforeId));$(hideId).classList.add('hide');c.scrollIntoView&&c.scrollIntoView({block:'center'})}
+function reqPreview(){if(!$('reqDet').open)return;const o=JSON.parse(reqBody(reqId()));o.token='(hidden)';$('reqPre').textContent=JSON.stringify(o,null,1)}
+function reqMsg(h){$('reqMsg').innerHTML=h}
+function sendRequest(){if(SENDING)return;const err=checkContact($('g_biz').value.trim(),$('g_phone').value.trim(),$('g_email').value.trim(),'reqConsent');
+ if(err){reqMsg('<p class="note" style="color:var(--bad)">'+esc(err)+'</p>');return}
+ if($('g_hp').value){okCard('BH-000000','',"gate","gate");return}
+ SENDING=true;$('reqBtn').disabled=true;reqMsg('<p class="note">Sending…</p>');
+ postReq(reqBody(reqId())).then(ref=>okCard(ref,$('g_email').value.trim()||$('g_phone').value.trim(),'gate','gate'))
+  .catch(e=>{SENDING=false;$('reqBtn').disabled=false;reqMsg('<p class="note" style="color:var(--bad)">'+esc(failText(e&&e.message))+' You can try again, or use <b>Email me my full report</b> below.</p>')})}
+function sendConsult(){if(SENDING)return;const m=h=>{$('cMsg').innerHTML=h};
+ const err=checkContact($('c_biz').value.trim(),$('c_phone').value.trim(),$('c_email').value.trim(),'cConsent');
+ if(err){m('<p class="note" style="color:var(--bad)">'+esc(err)+'</p>');return}
+ if($('c_hp').value){okCard('BH-000000','','consultBox','consultBox');return}
+ SENDING=true;$('cBtn').disabled=true;m('<p class="note">Sending…</p>');
+ postReq(JSON.stringify(consultPayload(reqId()))).then(ref=>okCard(ref,$('c_email').value.trim()||$('c_phone').value.trim(),'consultBox','consultBox'))
+  .catch(e=>{SENDING=false;$('cBtn').disabled=false;m('<p class="note" style="color:var(--bad)">'+esc(failText(e&&e.message))+' You can try again.</p>')})}
+function reqInit(){
+ legalLinks();
+ if(REQUEST_MODE==='consult'){
+  document.querySelectorAll('#v-start .hero button,#resumeNote,#psBox,#psLink').forEach(e=>e.classList.add('hide'));
+  document.title='Bridgehead · Request a free consult';const sm=document.querySelector('header small');if(sm)sm.textContent='Free consult';
+  const h=document.querySelector('#v-start .hero');h.querySelector('h1').textContent='Talk to a person about your business systems.';
+  h.querySelector('p').textContent='Request a free consult. Nothing is tested, scanned, or sent about your systems. A person will contact you.';
+  const note=h.querySelector('p.note:last-of-type');if(note)note.textContent='Your details are sent only when you press Request my consult.';
+  $('consultBox').hidden=false;
+  if(!reqOpen()){$('consultBox').innerHTML='<h2>Request a free consult</h2><p>Online requests are not open right now. For now, email us at <a href="mailto:'+esc(OWNER_EMAIL)+'">'+esc(OWNER_EMAIL)+'</a>.</p>';return}
+  $('cConsentText').innerHTML=consentHtml();return}
+ if(!SCAN_ENDPOINT)return;
+ $('reqBox').hidden=false;
+ if(!reqOpen()){$('reqBox').innerHTML='<p class="note">Online requests are not open right now. For now, use the email button below.</p>';return}
+ $('reqNote').innerHTML=(REQUEST_MODE==='full'?'Sending shares your name, business, contact details, every answer you gave, your phone and website results, anything from a deeper scan you loaded, and the website you came from. Nothing else.':'Sending shares your name, business, contact details, and the website you came from. It does not send your answers, results, or scan.')+'<span id="reqPrivacy"></span>';
+ $('reqConsentText').innerHTML=consentHtml();
+ const b=document.querySelector('#gate button[onclick="sendIt()"]');if(b){b.className='btn s';b.style.marginTop='8px';b.textContent='Or email me my full report'}
+ $('reqDet').addEventListener('toggle',reqPreview);['g_name','g_biz','g_phone','g_email','g_want'].forEach(i=>$(i).addEventListener('input',reqPreview))}
+/* BHC-REQ-END */
+
+
+/* ---------- Send ---------- */
+function code(R){const o={v:1,a:A,s:SYS.ids,ai:(R.AIL||[]).map(t=>t.n),x:Object.fromEntries(Object.entries(R.SM||{}).map(([k,m])=>[k,m.s])),o:SYS.os.concat(DEV.os?[DEV.os]:[]),d:{br:DEV.br,ram:DEV.ram,cores:DEV.cores},ph:PS_code(),sc:R.score,lo:R.lo,hi:R.hi,biz:$('g_biz').value.trim()};
+ return 'BH1:'+btoa(unescape(encodeURIComponent(JSON.stringify(o)))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')}
+function summary(){const R=window._R||results();const nm=$('g_name').value.trim(),bz=$('g_biz').value.trim(),ph=$('g_phone').value.trim();
+ const L=[`Hi ${OWNER_NAME.split(' ')[0]},`,'',`I ran the Bridgehead Checkup${bz?' for '+bz:''} and I'd like the full report and fix plan.`,'',`What matters most: ${$('g_want').value}`,`Score: ${R.score}/100 (${grade(R.score)[0]}) · ${R.F.length+R.secBad} issues · est. $${R.lo.toLocaleString()}–$${R.hi.toLocaleString()}/yr`,''].concat(R.secBad?['Security items to fix: '+Object.entries(R.SM).filter(([k,m])=>m.s==='warn'||m.s==='risk').map(([k])=>SECDEF[k][0]).join(', '),'']:[]).concat(R.AIL&&R.AIL.length?['AI tools found: '+R.AIL.map(t=>t.n).join(', '),'']:[]).concat(PS_lines()).concat(['Issues found:']).concat(R.F.slice(0,8).map(f=>`- [${f.sev}] ${f.t}`)).concat(R.F.length>8?[`- +${R.F.length-8} more`]:[]).concat(['',(nm?`— ${nm}${ph?' · '+ph:''}`:(ph?ph:''))+($('g_email').value.trim()?' · '+$('g_email').value.trim():''),'','(Bridgehead code, for the assessor: '+code(R)+')']);
+ return L.join('\n')}
+function sendIt(){if(!$('g_biz').value.trim()){alert('Add your business name so we know who it\'s for.');$('g_biz').focus();return}
+ const sub='Bridgehead Checkup — '+$('g_biz').value.trim();location.href='mailto:'+encodeURIComponent(OWNER_EMAIL)+'?subject='+encodeURIComponent(sub)+'&body='+encodeURIComponent(summary())}
+function copyIt(){const t=summary();const ok=()=>{$('copyMsg').textContent='Copied — paste it into an email to '+OWNER_EMAIL};try{navigator.clipboard.writeText(t).then(ok,()=>fbCopy(t,ok))}catch(e){fbCopy(t,ok)}}
+
+/* ---------- Flow ---------- */
+function go(n){['v-start','v-q','v-res'].forEach((v,i)=>$(v).classList.toggle('hide',i!==n));
+ if(n===2){const miss=scored().filter(q=>A[q.id]==null).length;if(miss>3){$('v-res').classList.add('hide');$('v-q').classList.remove('hide');$('needMore').textContent='Answer at least '+(scored().length-3)+' questions for a useful score ('+miss+' left).';return}renderRes()}
+ window.scrollTo(0,0)}
+function startOver(){if(!confirm('Clear all answers and scan results from this device?'))return;try{localStorage.removeItem('bhc_answers');localStorage.removeItem('bhc_sys');localStorage.removeItem('bhc_ps')}catch(e){}
+ A={};PS={ph:{},url:'',site:null};REQ_ID=null;SENDING=false;(function(){const o=$('reqOk');if(o)o.remove();$('gate').classList.remove('hide');$('consultBox').classList.remove('hide');$('reqBtn').disabled=false;$('cBtn').disabled=false;$('reqMsg').innerHTML='';$('cMsg').innerHTML=''})();SYS={apps:[],procs:[],os:[],exts:{},ids:[],secs:[],extn:[],start:[],vsx:[],aios:[]};['g_name','g_biz','g_phone'].forEach(id=>$(id).value='');$('deepMsg').textContent='';renderQs();psInit();$('resumeNote').classList.add('hide');go(0)}
+if(Object.keys(A).length||SYS.ids.length)$('resumeNote').classList.remove('hide');
+renderQs();devCheck().then(psInit);
+</script>
+</body>
+</html>
