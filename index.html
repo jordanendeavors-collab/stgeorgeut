@@ -238,7 +238,7 @@ html[data-theme="light"] #weather-canvas{display:none}
     <div class="alert-card info click" data-go="alerts" id="ov-fire"><div class="alert-icon">&#128293;</div><div class="alert-body"><div class="alert-title">Wildfire</div><div class="alert-text">Loading&hellip;</div></div></div>
     <div class="alert-card info click" data-go="stats" id="ov-facts"><div class="alert-icon">&#128202;</div><div class="alert-body"><div class="alert-title">About St. George</div><div class="alert-text">Loading&hellip;</div></div></div>
     <a class="alert-card ok click" href="#save" id="pwa-card"><div class="alert-icon">&#128241;</div><div class="alert-body"><div class="alert-title">Save this site to your screen</div><div class="alert-text">Open it like an app from your phone's home screen or your computer's desktop. One tap, no store.</div></div></a>
-    <a class="alert-card info click" href="checkup/" id="ov-biz"><div class="alert-icon">&#128188;</div><div class="alert-body"><div class="alert-title">Own a business in St. George? Get help with your business systems</div><div class="alert-text">Free to start. Talk to Bridgehead about your phones, your website, and the software you run on. By Bridgehead.</div></div></a>
+    <a class="alert-card info click" href="checkup/" id="ov-biz" style="display:none" data-bh-hold="1"><div class="alert-icon">&#128188;</div><div class="alert-body"><div class="alert-title">Own a business in St. George? Get help with your business systems</div><div class="alert-text">Free to start. Talk to Bridgehead about your phones, your website, and the software you run on. By Bridgehead.</div></div></a>
   </div>
   <p class="note">Every figure on this site is fetched live from the source named beside it. Where a source is not available for St. George, the page says so.</p>
 </section>
@@ -360,7 +360,7 @@ html[data-theme="light"] #weather-canvas{display:none}
 <aside class="sidebar" aria-label="Quick facts">
   <div class="sidebar-widget"><div class="widget-head">Right now</div><div class="widget-body" id="sb-now">Loading&hellip;</div></div>
   <div class="sidebar-widget" id="pwa-widget"><div class="widget-head">Save to your screen</div><div class="widget-body">Open this site like an app from your home screen or desktop.<a class="emerg-link" href="#save" id="pwa-btn" style="margin-top:8px"><span>&#128241;</span>Save to screen</a></div></div>
-  <div class="sidebar-widget"><div class="widget-head">For local businesses</div><div class="widget-body">Free to start. Ask Bridgehead about your business systems.<a class="emerg-link" href="checkup/" style="margin-top:8px"><span>&#128188;</span>Start here</a></div></div>
+  <div class="sidebar-widget" style="display:none" data-bh-hold="1"><div class="widget-head">For local businesses</div><div class="widget-body">Free to start. Ask Bridgehead about your business systems.<a class="emerg-link" href="checkup/" style="margin-top:8px"><span>&#128188;</span>Start here</a></div></div>
   <div class="sidebar-widget"><div class="widget-head">Sun &amp; moon</div><div class="widget-body" id="sb-sun">Loading&hellip;</div></div>
   <div class="sidebar-widget"><div class="widget-head">Emergency and official</div><div class="widget-body" id="sb-links"></div></div>
 </aside>
@@ -368,7 +368,7 @@ html[data-theme="light"] #weather-canvas{display:none}
 
 <footer>
   <p>Sources: National Weather Service (conditions, forecast, alerts); U.S. Geological Survey (earthquakes); national wildfire incident reporting (wildfire and prescribed burns);  OpenStreetMap contributors (places); Wikidata (city facts); Nager.Date (holidays).</p>
-  <p>Business owners: <a href="checkup/">get help with your business systems</a>, by Bridgehead.</p>
+  <p style="display:none" data-bh-hold="1">Business owners: <a href="checkup/">get help with your business systems</a>, by Bridgehead.</p>
   <p>Police figures are published by the agency and are not confirmed crimes. Calls for service are reports that were dispatched, not findings. This site is not an emergency service and is not affiliated with any government agency. Information can be delayed, incomplete, or wrong. In an emergency, call 911.</p>
 </footer>
 <div class="pwa-dlg" id="pwa-dlg" role="dialog" aria-modal="true" aria-labelledby="pwa-t" hidden>
