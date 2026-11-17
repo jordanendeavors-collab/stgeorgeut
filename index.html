@@ -111,6 +111,7 @@ a.comm-card:hover,a.food-card:hover{border-color:var(--ember)}
 .bar .track{background:var(--border);height:10px}.bar .fill{background:var(--ember);height:10px}
 .bar .n{text-align:right;font-family:Consolas,'SFMono-Regular',Menlo,'Courier New',monospace;font-size:.7rem;color:var(--text)}
 .note{font-size:.8rem;color:var(--text2);margin:10px 0 0;line-height:1.5}
+.rf-g{border:1px solid var(--border);background:var(--card);margin:8px 0}.rf-g summary{cursor:pointer;padding:12px 14px;font-weight:600;min-height:44px;box-sizing:border-box}.rf-t{width:100%;border-collapse:collapse;font-size:.85rem}.rf-t th,.rf-t td{text-align:left;padding:8px 14px;border-top:1px solid var(--border);vertical-align:top}.rf-t td:first-child{white-space:nowrap;font-variant-numeric:tabular-nums;font-weight:600}.rf-t th{color:var(--text2);font-weight:600;font-size:.75rem}
 .err{background:var(--alert-bg);border:1px solid var(--border);border-left:4px solid var(--warn);padding:12px 16px;margin-bottom:12px;font-size:.88rem;color:var(--text)}
 .err button{margin-left:8px;border:1px solid var(--border2);background:var(--card);padding:6px 12px;min-height:36px}
 .sidebar{display:flex;flex-direction:column;gap:18px}
@@ -335,6 +336,15 @@ html[data-theme="light"] #weather-canvas{display:none}
     <audio id="rd-audio" preload="none"></audio>
   </div>
   <p class="note" id="rd-note"></p>
+<div class="rf" id="rf"><div class="section-head" style="margin-top:22px">Reference frequencies <span class="count">MHz</span></div>
+<p class="note" style="margin-top:0">Frequencies people list for emergencies. Listen only. Many agencies now use digital or encrypted systems or other channels in your area, so you may hear nothing. Local use varies. Check your county emergency management office for what your area uses.</p>
+<details class="rf-g"><summary>Weather and alerts</summary><table class="rf-t"><thead><tr><th scope="col">MHz</th><th scope="col">Common use</th></tr></thead><tbody><tr><td>162.400 to 162.550</td><td>NOAA Weather Radio. Seven channels; one is the strongest where you are. Also 163.275 in some places.</td></tr><tr><td>156.750</td><td>Marine weather alerts</td></tr></tbody></table></details>
+<details class="rf-g"><summary>Calling channels (amateur and personal radio)</summary><table class="rf-t"><thead><tr><th scope="col">MHz</th><th scope="col">Common use</th></tr></thead><tbody><tr><td>52.525</td><td>Six-meter FM calling (amateur)</td></tr><tr><td>146.520</td><td>Two-meter simplex calling (amateur). The most common ham calling channel.</td></tr><tr><td>462.675</td><td>GMRS emergency and traveler assistance channel</td></tr></tbody></table></details>
+<details class="rf-g"><summary>Fire, police, rescue (listen only)</summary><table class="rf-t"><thead><tr><th scope="col">MHz</th><th scope="col">Common use</th></tr></thead><tbody><tr><td>154.280</td><td>Fire emergency. Also 154.265 and 154.295.</td></tr><tr><td>155.160</td><td>Search and rescue</td></tr><tr><td>155.475</td><td>Police emergency</td></tr><tr><td>39.460</td><td>Local and state police emergency</td></tr><tr><td>156.800</td><td>Marine distress, calling and safety (Channel 16)</td></tr></tbody></table></details>
+<details class="rf-g"><summary>Disaster relief and government (listen only)</summary><table class="rf-t"><thead><tr><th scope="col">MHz</th><th scope="col">Common use</th></tr></thead><tbody><tr><td>138.225</td><td>FEMA disaster relief</td></tr><tr><td>47.420</td><td>Red Cross relief</td></tr><tr><td>34.900</td><td>National Guard nationwide emergency</td></tr><tr><td>163.4875</td><td>National Guard</td></tr><tr><td>163.5125</td><td>Armed forces disaster preparedness</td></tr><tr><td>164.500</td><td>HUD</td></tr><tr><td>168.550</td><td>Federal civilian emergencies</td></tr><tr><td>409.625</td><td>State Department</td></tr></tbody></table></details>
+<details class="rf-g"><summary>Aviation and military (listen only)</summary><table class="rf-t"><thead><tr><th scope="col">MHz</th><th scope="col">Common use</th></tr></thead><tbody><tr><td>121.500</td><td>Aeronautical emergency</td></tr><tr><td>243.000</td><td>Military aviation emergency</td></tr><tr><td>311.000 and 319.400</td><td>Air Force</td></tr><tr><td>317.700 and 317.800</td><td>Coast Guard aviation</td></tr><tr><td>340.200</td><td>Navy aviation</td></tr></tbody></table></details>
+<details class="rf-g"><summary>Business</summary><table class="rf-t"><thead><tr><th scope="col">MHz</th><th scope="col">Common use</th></tr></thead><tbody><tr><td>151.625</td><td>Mobile businesses. Also 154.570 and 154.600.</td></tr></tbody></table></details>
+<p class="note">Compiled from a public frequency table. Not verified for your area.</p></div>
 </section>
 
 <section class="tab-section" id="tab-stats">
