@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /checkup/
+
+Sitemap: https://www.stgeorgewatch.com/sitemap.xml
